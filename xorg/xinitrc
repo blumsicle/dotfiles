@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+
+# merge in defaults and keymaps
+if [ -f $userresources ]; then
+  xrdb -merge "$userresources"
+fi
+
+if [ -f $usermodmap ]; then
+  xmodmap "$usermodmap"
+fi
+
+# run commands at startup
+if [ -d $HOME/.xinitrc.d ]; then
+  for f in $HOME/.xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# start window manager
+exec awesome

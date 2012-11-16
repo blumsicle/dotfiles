@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# ~/.xinitrc.d/pulseaudio
+#
+# start a pulseaudio session
+case "$DESKTOP_SESSION" in
+  gnome|kde*|xfce*) # started via xdg autostart
+    ;;
+  *)
+    if [[ -z $KDE_FULL_SESSION && -z $GNOME_DESKTOP_SESSION_ID ]]; then
+      /usr/bin/start-pulseaudio-x11
+    fi
+    ;;
+esac

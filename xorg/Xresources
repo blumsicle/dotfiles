@@ -1,0 +1,56 @@
+!!
+!! ~/.Xresources
+!!
+
+!! URxvt
+URxvt*scrollBar:        false
+URxvt*tabbed.tabbar-fg: 2
+URxvt*tabbed.tabbar-bg: 0
+URxvt*tabbed.tab-fg:    3
+URxvt*tabbed.tab-bg:    0
+URxvt*font:             xft:inconsolata:antialias=true:pixelsize=14
+URxvt*boldFont:         xft:inconsolata:bold:antialias=true:style=bold;pixelsize=14
+URxvt*loginShell:       true
+URxvt*perl-ext-common:  default,matcher,tabbed
+URxvt*urlLauncher:      /usr/bin/firefox
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    3
+URxvt.tabbed.tab-bg:    0
+URxvt*matcher.button:   1
+URxvt*colorBD:          #B1748A
+URxvt*colorUL:          #A6C4B0
+URxvt*cursorBlink:      true
+URxvt*depth:            32
+URxvt*background:       [95]#101010
+
+! Colors
+*foreground:            #d0d0d0
+*background:            #101010
+*cursorColor:           #d0d0d0
+*cursorColor2:          #101010
+
+!black
+URxvt*color0:           #101010
+URxvt*color8:           #303030
+!red
+URxvt*color1:           #960050
+URxvt*color9:           #ff0090
+!green
+URxvt*color2:           #66aa11
+URxvt*color10:          #80ff00
+!yellow
+URxvt*color3:           #c47f2c
+URxvt*color11:          #ffba68
+!blue
+URxvt*color4:           #30309b
+URxvt*color12:          #5f5fee
+!magenta
+URxvt*color5:           #7e40a5
+URxvt*color13:          #bb88dd
+!cyan
+URxvt*color6:           #3579a8
+URxvt*color14:          #4eb4fa
+!white
+URxvt*color7:           #9999aa
+URxvt*color15:          #d0d0d0

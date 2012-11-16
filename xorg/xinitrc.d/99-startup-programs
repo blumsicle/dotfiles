@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# ~/.xinitrc.d/99-startup-programs
+#
+# run programs on xorg startup
+xcompmgr &
+urxvtd -q -f -o
