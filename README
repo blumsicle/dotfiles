@@ -17,8 +17,13 @@ Create symlinks:
     ln -s ~/dotfiles/xorg/xinitrc    ~/.xinitrc
     ln -s ~/dotfiles/xorg/xinitrc.d  ~/.xinitrc.d
 
-Update vundle plugins (vim-plugins):
+Prepare oh-my-zsh:
 
+    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+Prepare vundle (vim-plugins):
+
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     vim +BundleInstall! +qall
 
 Build command-t (vim plugins):
