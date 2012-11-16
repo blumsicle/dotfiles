@@ -1,0 +1,28 @@
+Installation:
+
+    git clone https://github.com/blumbri/dotfiles.git ~/dotfiles
+
+Create symlinks:
+
+    ln -s ~/dotfiles/vim ~/.vim
+    ln -s ~/.vim/vimrc   ~/.vimrc
+
+    ln -s ~/dotfiles/zsh/zshrc     ~/.zshrc
+    ln -s ~/dotfiles/zsh/zshenv    ~/.zshenv
+    ln -s ~/dotfiles/zsh/zprofile  ~/.zprofile
+    ln -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
+
+    ln -s ~/dotfiles/xorg/Xresources ~/.Xresources
+    ln -s ~/dotfiles/xorg/Xmodmap    ~/.Xmodmap
+    ln -s ~/dotfiles/xorg/xinitrc    ~/.xinitrc
+    ln -s ~/dotfiles/xorg/xinitrc.d  ~/.xinitrc.d
+
+Update vundle plugins (vim-plugins):
+
+    vim +BundleInstall! +qall
+
+Build command-t (vim plugins):
+
+    cd ~/dotfiles/vim/bundle/command-t/ruby/command-t
+    ruby extconf.rb
+    make
