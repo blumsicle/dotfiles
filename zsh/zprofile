@@ -1,0 +1,6 @@
+#
+# ~/.zprofile
+#
+
+# cache ssh password with keychain
+eval `keychain --quiet --eval id_rsa`

@@ -1,0 +1,9 @@
+#
+# ~/.zshenv
+#
+
+# while in gvim shell, set dumb defaults
+if [ -t 0 ] && [ "$TERM" = "dumb" ] && [ -n "$VIM" ] ; then
+  stty erase '^H' 
+  export MANPAGER='more'
+fi
