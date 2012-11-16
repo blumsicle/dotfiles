@@ -1,0 +1,203 @@
+"
+" ~/.vimrc
+"
+
+" Startup Commands -------------------------------------------------------- {{{
+
+" when started as evim, exit, as 'evim.vim' will already load
+if v:progname =~? "evim"
+  finish
+endif
+
+" upon load, jump to previous position in file
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
+
+" }}}
+" Vundle Setup ------------------------------------------------------------ {{{
+
+set nocompatible                      " use vim settings (as opposed to vi)
+filetype off                          " required to initialize vundle
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" ---- Plugins ------------------------------------------------------------ {{{
+
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-endwise'
+Bundle 'tomasr/molokai'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-surround'
+Bundle 'guns/ultisnips'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-repeat'
+Bundle 'git://git.wincent.com/command-t.git'
+
+
+" }}}
+
+filetype on                           " enable filetype detection
+filetype plugin on                    " enable plugins for specific filetypes
+filetype indent on                    " enable indenting for specific filetypes
+
+
+" }}}
+" Options ----------------------------------------------------------------- {{{
+
+colorscheme molokai                   " default colorscheme
+syntax on                             " enable syntax highlighting
+
+set backspace=indent,eol,start        " allow backspacing over everything
+set nobackup                          " do not keep backup files
+set history=100                       " command line history kept
+set ruler                             " show cursor position (statusline overrides)
+set showcmd                           " display incomplete commands
+set incsearch                         " do incremental searching
+set mouse=a                           " enable mouse (just in case)
+set hlsearch                          " highlight search terms
+set hidden                            " allow buffers to be hidden without save
+set novisualbell                      " no visual bell
+set wildmenu                          " navigable completion menu
+set ignorecase                        " case insensitive searching
+set smartcase                         " case sensitive when capital letter typed
+set scrolloff=8                       " begin scrolling when 8 lines from edge
+set confirm                           " confirm prior to closing modified files
+set number                            " always show line numbers
+set shiftwidth=2                      " spaces per (auto)indent
+set softtabstop=2                     " tab equals 2 spaces
+set expandtab                         " tabs to spaces
+set textwidth=0                       " prevent word wrapping
+set foldmethod=marker                 " auto fold files based on foldmarker
+set autoindent                        " automatically indent on return
+set lazyredraw                        " do not redraw during macro execution
+set laststatus=2                      " always show status bar
+set list                              " show whitespace characters
+set listchars=tab:»\ ,trail:⋅,eol:¬   " customized list characters
+set whichwrap=b,s,h,l,<,>,[,]         " allow movement keys to wrap line
+set gdefault                          " set /g flag on :s substitutions by default
+set colorcolumn=78                    " show vertical bar at column
+set completeopt=menu,preview,longest  " completion menu options
+set pastetoggle=<F2>                  " toggle paste mode (disables autoindent and such)
+set autochdir                         " automatically cd into file's directory
+
+if has('gui_running')
+  set guioptions-=T                   " no toolbar in gvim
+  set guioptions-=m                   " no menu in gvim
+  set guioptions-=r                   " no right scrollbar in gvim
+  set guioptions-=L                   " no left scrollbar in gvim
+  set guioptions+=c                   " use console prompts
+  set guifont=Inconsolata\ Medium\ 11 " default font in gvim
+endif
+
+
+" }}}
+" Functions --------------------------------------------------------------- {{{
+
+" show highlighting groups for current word
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
+
+" restore cursor to previous position
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+
+" }}}
+" Variables --------------------------------------------------------------- {{{
+
+" command prefix (substitute for <leader>)
+let mapleader = ","
+let localmapleader = "\\"
+
+" nerdcommenter space delimiters
+let NERDSpaceDelims = 1
+
+" supertab default completion
+let SuperTabLongestEnhanced = 1
+
+
+" }}}
+" Keymappings ------------------------------------------------------------- {{{
+
+" edit and source .vimrc respectively
+nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :so $MYVIMRC<cr>
+
+" edit zshrc
+nnoremap <silent> <leader>ez :e ~/.zshrc<cr>
+
+" edit awesomerc
+nnoremap <silent> <leader>ea :e ~/.config/awesome/rc.lua<cr>
+
+" move to wrapped long lines instead of over them
+nnoremap j gj
+nnoremap k gk
+
+" show highlighting groups for current word
+nnoremap <leader>cw :call <SID>SynStack()<cr>
+
+" toggle spell check highlighting
+nnoremap <silent> <leader>sp :set spell!<cr>
+
+" move around windows
+nnoremap <leader>h <C-W>h
+nnoremap <leader>j <C-W>j
+nnoremap <leader>k <C-W>k
+nnoremap <leader>l <C-W>l
+
+" uppercase previous word
+nnoremap <leader>u gUiwea
+nnoremap <leader>U gUiwe
+
+" command mode movement
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" disable search highlight
+nnoremap <silent> <leader>/ :nohlsearch<cr>
+
+" toggle nerdtree
+nnoremap <silent> <leader>nt :NERDTree<cr>
+nnoremap <silent> <leader>nT :NERDTreeClose<cr>
+
+" switch to previous buffer
+nnoremap <leader><leader> <C-^>
+
+" sudo save root restricted files
+cnoremap w!! %!sudo tee > /dev/null %
+
+" delete all open buffers
+cnoremap bbd bufdo :bd
+
+" compile and run current c file
+if !has('gui_running')
+  nnoremap <F6> :w<CR>:!clear && gcc -std=c99 -O -Wall -pedantic -o %:r %<CR>
+  nnoremap <F7> :!clear && ./%<<CR>
+  nnoremap <F8> :w<CR>:!clear && gcc -std=c99 -O -Wall -pedantic -o %:r % && ./%:r<CR>
+endif
+
+if has('gui_running')
+  nnoremap <F6> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -o %:r % 2>&1<CR>
+  nnoremap <F7> :!./%<<CR>
+  nnoremap <F8> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -o %:r % 2>&1 && ./%:r 2>&1<CR>
+endif
+
+
+" }}}
