@@ -85,7 +85,6 @@ set gdefault                          " set /g flag on :s substitutions by defau
 set colorcolumn=78                    " show vertical bar at column
 set completeopt=menu,preview,longest  " completion menu options
 set pastetoggle=<F2>                  " toggle paste mode (disables autoindent and such)
-set autochdir                         " automatically cd into file's directory
 
 if has('gui_running')
   set guioptions-=T                   " no toolbar in gvim
