@@ -12,10 +12,11 @@ Create symlinks:
     ln -s ~/dotfiles/zsh/zprofile  ~/.zprofile
     ln -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
 
-    ln -s ~/dotfiles/xorg/Xresources ~/.Xresources
-    ln -s ~/dotfiles/xorg/Xmodmap    ~/.Xmodmap
-    ln -s ~/dotfiles/xorg/xinitrc    ~/.xinitrc
-    ln -s ~/dotfiles/xorg/xinitrc.d  ~/.xinitrc.d
+    ln -s ~/dotfiles/xorg/Xresources  ~/.Xresources
+    ln -s ~/dotfiles/xorg/Xmodmap     ~/.Xmodmap
+    ln -s ~/dotfiles/xorg/xbindkeysrc ~/.xbindkeysrc
+    ln -s ~/dotfiles/xorg/xinitrc     ~/.xinitrc
+    ln -s ~/dotfiles/xorg/xinitrc.d   ~/.xinitrc.d
 
 Prepare oh-my-zsh:
 
