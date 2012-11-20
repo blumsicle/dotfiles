@@ -1,6 +1,0 @@
-#!/bin/sh
-#
-# ~/.xinitrc.d/composite
-#
-# enable compositing
-compton -c -f -b
