@@ -3,5 +3,6 @@
 # ~/.xinitrc.d/99-startup-programs
 #
 # run programs on xorg startup
+volumeicon &
 compton -c -f -b
 urxvtd -q -f -o
