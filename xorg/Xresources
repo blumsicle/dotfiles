@@ -22,7 +22,7 @@ URxvt*colorBD:          #B1748A
 URxvt*colorUL:          #A6C4B0
 URxvt*cursorBlink:      true
 URxvt*depth:            32
-URxvt*background:       [95]#101010
+URxvt*background:       [70]#101010
 
 ! Colors
 *foreground:            #d0d0d0

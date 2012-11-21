@@ -4,5 +4,5 @@
 #
 # run programs on xorg startup
 volumeicon &
-compton -c -f -b
+compton -c -f -b -D 5
 urxvtd -q -f -o
