@@ -41,8 +41,7 @@ VISUAL='vim'
 PAGER='vimpager'
 MANPAGER='vimpager'
 KEYTIMEOUT=1
-PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT PATH
+export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT
 
 # Aliases
 alias pacman='pacman-color'
