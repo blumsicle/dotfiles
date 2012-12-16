@@ -39,6 +39,7 @@ Bundle 'guns/ultisnips'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
 Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'vim-scripts/DoxygenToolkit.vim'
 
 
 " }}}
@@ -128,6 +129,9 @@ let NERDSpaceDelims = 1
 
 " supertab default completion
 let SuperTabLongestEnhanced = 1
+
+" enable doxygen syntax highlighting
+let load_doxygen_syntax=1
 
 
 " }}}
