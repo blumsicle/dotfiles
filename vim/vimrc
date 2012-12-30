@@ -197,9 +197,9 @@ if !has('gui_running')
 endif
 
 if has('gui_running')
-  nnoremap <F6> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -o %:r % 2>&1<CR>
+  nnoremap <F6> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1<CR>
   nnoremap <F7> :!./%<<CR>
-  nnoremap <F8> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -o %:r % 2>&1 && ./%:r 2>&1<CR>
+  nnoremap <F8> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1 && ./%:r 2>&1<CR>
 endif
 
 
