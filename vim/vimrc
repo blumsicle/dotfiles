@@ -78,6 +78,7 @@ set textwidth=0                       " prevent word wrapping
 set foldmethod=marker                 " auto fold files based on foldmarker
 set autoindent                        " automatically indent on return
 set lazyredraw                        " do not redraw during macro execution
+set spell                             " enable spell checking
 set laststatus=2                      " always show status bar
 set list                              " show whitespace characters
 set listchars=tab:»\ ,trail:⋅,eol:¬   " customized list characters
