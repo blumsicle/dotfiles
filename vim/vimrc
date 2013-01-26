@@ -15,6 +15,11 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
+" autoload cscope database upon directory change
+if has('cscope')
+  autocmd BufEnter /* call LoadCscope()
+endif
+
 
 " }}}
 " Vundle Setup ------------------------------------------------------------ {{{
@@ -87,6 +92,7 @@ set gdefault                          " set /g flag on :s substitutions by defau
 set colorcolumn=78                    " show vertical bar at column
 set completeopt=menu,preview,longest  " completion menu options
 set pastetoggle=<F2>                  " toggle paste mode (disables autoindent and such)
+set cscopetag                         " search cscope then ctags
 
 if has('gui_running')
   set guioptions-=T                   " no toolbar in gvim
@@ -118,6 +124,17 @@ function! ResCur()
   if line("'\"") <= line("$")
     normal! g`"
     return 1
+  endif
+endfunction
+
+" autoload cscope database on directory change
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose
+    execute "cscope add " . db . " " . path
+    set cscopeverbose
   endif
 endfunction
 
@@ -205,6 +222,39 @@ if has('gui_running')
   nnoremap <F6> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1<CR>
   nnoremap <F7> :!./%<<CR>
   nnoremap <F8> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1 && ./%:r 2>&1<CR>
+endif
+
+" cscope find shortcuts
+if has('cscope')
+  " current window
+  nnoremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+  nnoremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+  nnoremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+  " split horizontally
+  nnoremap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+  nnoremap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+  nnoremap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+  " split vertically
+  nnoremap <C-Space><C-Space>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space><C-Space>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space><C-Space>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space><C-Space>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space><C-Space>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <C-Space><C-Space>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+  nnoremap <C-Space><C-Space>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+  nnoremap <C-Space><C-Space>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
 
