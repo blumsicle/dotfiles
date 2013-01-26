@@ -40,6 +40,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
+Bundle 'vim-scripts/Wombat'
 
 
 " }}}
@@ -52,7 +53,7 @@ filetype indent on                    " enable indenting for specific filetypes
 " }}}
 " Options ----------------------------------------------------------------- {{{
 
-colorscheme molokai                   " default colorscheme
+colorscheme wombat                    " default colorscheme
 syntax on                             " enable syntax highlighting
 
 set backspace=indent,eol,start        " allow backspacing over everything
