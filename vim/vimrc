@@ -40,6 +40,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
+Bundle 'vim-scripts/wombat256.vim'
 Bundle 'vim-scripts/Wombat'
 
 
@@ -53,7 +54,6 @@ filetype indent on                    " enable indenting for specific filetypes
 " }}}
 " Options ----------------------------------------------------------------- {{{
 
-colorscheme wombat                    " default colorscheme
 syntax on                             " enable syntax highlighting
 
 set backspace=indent,eol,start        " allow backspacing over everything
@@ -96,6 +96,9 @@ if has('gui_running')
   set guioptions+=c                   " use console prompts
   set guifont=Inconsolata\ Medium\ 11 " default font in gvim
   set spell                           " enable spell checking
+  colorscheme wombat                  " default colorscheme
+else
+  colorscheme wombat256mod            " default colorscheme
 endif
 
 
