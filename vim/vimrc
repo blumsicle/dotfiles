@@ -77,8 +77,8 @@ set smartcase                         " case sensitive when capital letter typed
 set scrolloff=8                       " begin scrolling when 8 lines from edge
 set confirm                           " confirm prior to closing modified files
 set number                            " always show line numbers
-set shiftwidth=2                      " spaces per (auto)indent
-set softtabstop=2                     " tab equals 2 spaces
+set shiftwidth=4                      " spaces per (auto)indent
+set softtabstop=4                     " tab equals 2 spaces
 set expandtab                         " tabs to spaces
 set textwidth=0                       " prevent word wrapping
 set foldmethod=marker                 " auto fold files based on foldmarker
