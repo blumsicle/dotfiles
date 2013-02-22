@@ -41,7 +41,9 @@ VISUAL='vim'
 PAGER='less'
 MANPAGER='less'
 KEYTIMEOUT=1
-export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT
+LESS=' -R '
+LESSOPEN='| src-hilite-lesspipe.sh %s'
+export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT LESS LESSOPEN
 
 # Aliases
 alias pacman='pacman-color'
