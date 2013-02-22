@@ -42,7 +42,7 @@ PAGER='less'
 MANPAGER='less'
 KEYTIMEOUT=1
 LESS=' -R '
-LESSOPEN='| src-hilite-lesspipe.sh %s'
+LESSOPEN='| source-highlight-esc.sh %s'
 export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT LESS LESSOPEN
 
 # Aliases
