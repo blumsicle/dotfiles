@@ -38,8 +38,8 @@ source $ZSH/oh-my-zsh.sh
 # Variables
 EDITOR='vim'
 VISUAL='vim'
-PAGER='vimpager'
-MANPAGER='vimpager'
+PAGER='most'
+MANPAGER='most'
 KEYTIMEOUT=1
 export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT
 
