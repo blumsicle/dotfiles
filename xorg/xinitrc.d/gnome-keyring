@@ -3,7 +3,7 @@
 # ~/.xinitrc.d/gnome-keyring
 #
 # allow ssh password caching
-eval $(gnome-keyring-daemon --start)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 export GPG_AGENT_INFO
 export GNOME_KEYRING_CONTROL
