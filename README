@@ -28,6 +28,7 @@ Prepare vundle (vim-plugins):
 
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     vim +BundleInstall! +qall
+        # note: you may need to temporarily disable colorscheme first
 
 Build command-t (vim plugins):
 
