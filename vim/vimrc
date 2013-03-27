@@ -85,8 +85,6 @@ set foldmethod=marker                 " auto fold files based on foldmarker
 set autoindent                        " automatically indent on return
 set lazyredraw                        " do not redraw during macro execution
 set laststatus=2                      " always show status bar
-set list                              " show whitespace characters
-set listchars=tab:»\ ,trail:⋅,eol:¬   " customized list characters
 set whichwrap=b,s,h,l,<,>,[,]         " allow movement keys to wrap line
 set gdefault                          " set /g flag on :s substitutions by default
 set colorcolumn=78                    " show vertical bar at column
@@ -102,6 +100,8 @@ if has('gui_running')
   set guioptions+=c                   " use console prompts
   set guifont=Inconsolata\ Medium\ 11 " default font in gvim
   set spell                           " enable spell checking
+  set list                            " show whitespace characters
+  set listchars=tab:»\ ,trail:⋅,eol:¬ " customized list characters
   colorscheme wombat                  " default colorscheme
 else
   colorscheme wombat256mod            " default colorscheme
