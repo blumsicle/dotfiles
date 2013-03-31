@@ -47,6 +47,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 Bundle 'vim-scripts/wombat256.vim'
 Bundle 'vim-scripts/Wombat'
+Bundle 'PKGBUILD'
 
 
 " }}}
