@@ -49,7 +49,7 @@ LESSOPEN='| source-highlight-esc.sh %s'
 export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT LESS LESSOPEN
 
 # Aliases
-alias pacman='pacman-color'
+# alias pacman='pacman-color'
 alias ggvim='gvim --remote-silent'
 alias vvim='vim --remote-silent'
 
