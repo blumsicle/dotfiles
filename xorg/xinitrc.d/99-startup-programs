@@ -3,6 +3,4 @@
 # ~/.xinitrc.d/99-startup-programs
 #
 # run programs on xorg startup
-xscreensaver -no-splash &
-volumeicon &
-urxvtd -q -f -o
+dunst &
