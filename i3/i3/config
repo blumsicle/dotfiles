@@ -154,6 +154,9 @@ bar {
         modifier Mod3
 }
 
+# Move Alt_R from Mod1 to Mod3
+exec --no-startup-id xmodmap -e 'remove mod1 = Alt_R' -e 'add mod3 = Alt_R'
+
 # Volume keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id "vol_up"
 bindsym XF86AudioLowerVolume exec --no-startup-id "vol_down"
