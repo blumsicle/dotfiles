@@ -99,7 +99,7 @@ if has('gui_running')
   set guioptions-=r                   " no right scrollbar in gvim
   set guioptions-=L                   " no left scrollbar in gvim
   set guioptions+=c                   " use console prompts
-  set guifont=Inconsolata\ 10         " default font in gvim
+  set guifont=Cousine\ 10             " default font in gvim
   set list                            " show whitespace characters
   set listchars=tab:»\ ,trail:⋅,eol:¬ " customized list characters
   colorscheme wombat                  " default colorscheme
