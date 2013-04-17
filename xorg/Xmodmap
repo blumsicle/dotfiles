@@ -4,3 +4,6 @@ keycode 115 = XF86AudioRaiseVolume
 keycode 163 = XF86AudioNext
 keycode 164 = XF86AudioPlay
 keycode 165 = XF86AudioPrev
+
+remove mod1 = Alt_R
+add    mod3 = Alt_R
