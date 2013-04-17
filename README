@@ -20,6 +20,9 @@ Create symlinks:
     ln -s ~/dotfiles/xorg/xinitrc     ~/.xinitrc
     ln -s ~/dotfiles/xorg/xinitrc.d   ~/.xinitrc.d
 
+    ln -s ~/dotfiles/i3/i3       ~/.config/i3
+    ln -s ~/dotfiles/i3/i3status ~/.config/i3status
+
 Prepare oh-my-zsh:
 
     git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
