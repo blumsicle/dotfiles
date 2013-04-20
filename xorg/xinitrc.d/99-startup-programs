@@ -3,4 +3,5 @@
 # ~/.xinitrc.d/99-startup-programs
 #
 # run programs on xorg startup
+conky &
 dunst &

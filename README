@@ -23,6 +23,8 @@ Create symlinks:
     ln -s ~/dotfiles/i3/i3       ~/.config/i3
     ln -s ~/dotfiles/i3/i3status ~/.config/i3status
 
+    ln -s ~/dotfiles/conky/conkyrc ~/.conkyrc
+
 Prepare oh-my-zsh:
 
     git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
