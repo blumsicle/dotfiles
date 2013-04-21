@@ -35,7 +35,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-endwise'
 Bundle 'tomasr/molokai'
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
@@ -145,9 +145,6 @@ endfunction
 " command prefix (substitute for <leader>)
 let mapleader = ","
 let localmapleader = "\\"
-
-" nerdcommenter space delimiters
-let NERDSpaceDelims = 1
 
 " supertab default completion
 let SuperTabLongestEnhanced = 1
