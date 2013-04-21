@@ -20,5 +20,5 @@ minimum_size 745 195
 default_color ffffff
 
 TEXT
-${voffset 15}${offset 143}${font Bruno Ace:pixelsize=120}${time %I|%M}${font}${if_match ${time %H}<12}AM${else}${if_match ${time %H}>=12}PM${endif}${endif}${font}
+${voffset 15}${offset 143}${font Bruno Ace:pixelsize=120}${time %I|%M}${font}${time %p}${font}
 ${voffset 30}${offset 155}${font Bruno Ace:pixelsize=30}${alignr}${time %Y %A, %B %d}
