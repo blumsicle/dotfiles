@@ -45,7 +45,6 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
-Bundle 'vim-scripts/wombat256.vim'
 Bundle 'vim-scripts/Wombat'
 Bundle 'PKGBUILD'
 
@@ -102,10 +101,9 @@ if has('gui_running')
   set guifont=Cousine\ 10             " default font in gvim
   set list                            " show whitespace characters
   set listchars=tab:»\ ,trail:⋅,eol:¬ " customized list characters
-  colorscheme wombat                  " default colorscheme
-else
-  colorscheme wombat256mod            " default colorscheme
 endif
+
+colorscheme wombat                    " default colorscheme
 
 
 " }}}
