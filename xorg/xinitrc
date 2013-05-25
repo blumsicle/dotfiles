@@ -33,4 +33,4 @@ if [ -d $HOME/.xinitrc.d ]; then
 fi
 
 # start window manager
-exec i3
+exec startxfce4
