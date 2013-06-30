@@ -108,6 +108,7 @@ else
 endif
 
 colorscheme solarized                 " default colorscheme
+call togglebg#map("")                 " hack to get :ToggleBG (<F5>) loaded
 
 
 " }}}
