@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# ~/.xinitrc.d/cursor
+#
+# set default mouse cursor
+xsetroot -cursor_name left_ptr

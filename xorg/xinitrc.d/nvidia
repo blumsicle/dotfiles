@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# ~/.xinitrc.d/nvidia
+#
+# load nvidia-settings configuration
+nvidia-settings --load-config-only
