@@ -49,7 +49,8 @@ LESSOPEN='| source-highlight-esc.sh %s'
 export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT LESS LESSOPEN
 
 # Path
-path+=$HOME/bin
+path=("$HOME/.cabal/bin" $path)
+path=("$HOME/bin" $path)
 
 # Aliases
 alias ggvim='gvim --remote-silent'
