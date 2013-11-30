@@ -166,8 +166,8 @@ nnoremap <silent> <leader>sv :so $MYVIMRC<cr>
 " edit zshrc
 nnoremap <silent> <leader>ez :e ~/.zshrc<cr>
 
-" edit awesomerc
-nnoremap <silent> <leader>ea :e ~/.config/awesome/rc.lua<cr>
+" edit xmonad.hs
+nnoremap <silent> <leader>ex :e ~/.xmonad/xmonad.hs<cr>
 
 " move to wrapped long lines instead of over them
 nnoremap j gj
