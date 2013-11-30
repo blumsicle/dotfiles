@@ -2,5 +2,5 @@
 #
 # ~/.xinitrc.d/capslock
 #
-# set capslock as ctrl
-setxkbmap -option ctrl:nocaps
+# swap capslock and ctrl
+setxkbmap -option ctrl:swapcaps
