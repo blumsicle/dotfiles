@@ -47,6 +47,8 @@ Bundle 'vim-scripts/DoxygenToolkit.vim'
 Bundle 'tomasr/molokai'
 Bundle 'vim-scripts/Wombat'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'jplaut/vim-arduino-ino'
+Bundle 'sudar/vim-arduino-syntax'
 Bundle 'PKGBUILD'
 
 
