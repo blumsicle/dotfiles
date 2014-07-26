@@ -94,6 +94,7 @@ set colorcolumn=78                    " show vertical bar at column
 set completeopt=menu,preview,longest  " completion menu options
 set pastetoggle=<F2>                  " toggle paste mode (disables autoindent and such)
 set cscopetag                         " search cscope then ctags
+set background=dark                   " default background
 
 if has('gui_running')
   set guioptions-=T                   " no toolbar in gvim
@@ -104,12 +105,9 @@ if has('gui_running')
   set guifont=Droid\ Sans\ Mono\ 10   " default font in gvim
   set list                            " show whitespace characters
   set listchars=tab:»\ ,trail:⋅,eol:¬ " customized list characters
-  set background=light                " default gui background
-else
-  set background=dark                 " default cli background
 endif
 
-colorscheme solarized                 " default colorscheme
+colorscheme molokai                   " default colorscheme
 call togglebg#map("")                 " hack to get :ToggleBG (<F5>) loaded
 
 
