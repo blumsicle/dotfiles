@@ -16,3 +16,5 @@ if [ -n "$DISPLAY" ] && [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ] ; then
     export TERM='xterm-color'
   fi
 fi
+
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
