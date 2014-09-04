@@ -20,6 +20,9 @@ if has('cscope')
   autocmd BufEnter /* call LoadCscope()
 endif
 
+" set .gradle files filetype to groovy
+autocmd BufNewFile,BufRead *.gradle setfiletype groovy
+
 
 " }}}
 " Vundle Setup ------------------------------------------------------------ {{{
