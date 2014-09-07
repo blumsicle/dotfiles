@@ -6,18 +6,18 @@
 
 " when started as evim, exit, as 'evim.vim' will already load
 if v:progname =~? "evim"
-  finish
+    finish
 endif
 
 " upon load, jump to previous position in file
 augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
 augroup END
 
 " autoload cscope database upon directory change
 if has('cscope')
-  autocmd BufEnter /* call LoadCscope()
+    autocmd BufEnter /* call LoadCscope()
 endif
 
 " set .gradle files filetype to groovy
@@ -83,8 +83,8 @@ set smartcase                         " case sensitive when capital letter typed
 set scrolloff=8                       " begin scrolling when 8 lines from edge
 set confirm                           " confirm prior to closing modified files
 set number                            " always show line numbers
-set shiftwidth=2                      " spaces per (auto)indent
-set softtabstop=2                     " tab equals 2 spaces
+set shiftwidth=4                      " spaces per (auto)indent
+set softtabstop=4                     " tab equals 2 spaces
 set expandtab                         " tabs to spaces
 set textwidth=0                       " prevent word wrapping
 set foldmethod=marker                 " auto fold files based on foldmarker
@@ -100,14 +100,14 @@ set cscopetag                         " search cscope then ctags
 set background=dark                   " default background
 
 if has('gui_running')
-  set guioptions-=T                   " no toolbar in gvim
-  set guioptions-=m                   " no menu in gvim
-  set guioptions-=r                   " no right scrollbar in gvim
-  set guioptions-=L                   " no left scrollbar in gvim
-  set guioptions+=c                   " use console prompts
-  set guifont=Droid\ Sans\ Mono\ 10   " default font in gvim
-  set list                            " show whitespace characters
-  set listchars=tab:»\ ,trail:⋅,eol:¬ " customized list characters
+    set guioptions-=T                   " no toolbar in gvim
+    set guioptions-=m                   " no menu in gvim
+    set guioptions-=r                   " no right scrollbar in gvim
+    set guioptions-=L                   " no left scrollbar in gvim
+    set guioptions+=c                   " use console prompts
+    set guifont=Droid\ Sans\ Mono\ 10   " default font in gvim
+    set list                            " show whitespace characters
+    set listchars=tab:»\ ,trail:⋅,eol:¬ " customized list characters
 endif
 
 colorscheme molokai                   " default colorscheme
@@ -119,29 +119,29 @@ call togglebg#map("")                 " hack to get :ToggleBG (<F5>) loaded
 
 " show highlighting groups for current word
 function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
 " restore cursor to previous position
 function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
+    if line("'\"") <= line("$")
+        normal! g`"
+        return 1
+    endif
 endfunction
 
 " autoload cscope database on directory change
 function! LoadCscope()
-  let db = findfile("cscope.out", ".;")
-  if (!empty(db))
-    let path = strpart(db, 0, match(db, "/cscope.out$"))
-    set nocscopeverbose
-    execute "cscope add " . db . " " . path
-    set cscopeverbose
-  endif
+    let db = findfile("cscope.out", ".;")
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        set nocscopeverbose
+        execute "cscope add " . db . " " . path
+        set cscopeverbose
+    endif
 endfunction
 
 
@@ -216,48 +216,48 @@ cnoremap bbd bufdo :bd
 
 " compile and run current c file
 if !has('gui_running')
-  nnoremap <F6> :w<CR>:!clear && gcc -std=c99 -O -Wall -pedantic -o %:r %<CR>
-  nnoremap <F7> :!clear && ./%<<CR>
-  nnoremap <F8> :w<CR>:!clear && gcc -std=c99 -O -Wall -pedantic -o %:r % && ./%:r<CR>
+    nnoremap <F6> :w<CR>:!clear && gcc -std=c99 -O -Wall -pedantic -o %:r %<CR>
+    nnoremap <F7> :!clear && ./%<<CR>
+    nnoremap <F8> :w<CR>:!clear && gcc -std=c99 -O -Wall -pedantic -o %:r % && ./%:r<CR>
 endif
 
 if has('gui_running')
-  nnoremap <F6> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1<CR>
-  nnoremap <F7> :!./%<<CR>
-  nnoremap <F8> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1 && ./%:r 2>&1<CR>
+    nnoremap <F6> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1<CR>
+    nnoremap <F7> :!./%<<CR>
+    nnoremap <F8> :w<CR>:!gcc -std=c99 -O -Wall -pedantic -g -o %:r % 2>&1 && ./%:r 2>&1<CR>
 endif
 
 " cscope find shortcuts
 if has('cscope')
-  " current window
-  nnoremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-  nnoremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-  nnoremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    " current window
+    nnoremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nnoremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nnoremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-  " split horizontally
-  nnoremap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-  nnoremap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-  nnoremap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+    " split horizontally
+    nnoremap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nnoremap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nnoremap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
-  " split vertically
-  nnoremap <C-Space><C-Space>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space><C-Space>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space><C-Space>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space><C-Space>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space><C-Space>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
-  nnoremap <C-Space><C-Space>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
-  nnoremap <C-Space><C-Space>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-  nnoremap <C-Space><C-Space>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+    " split vertically
+    nnoremap <C-Space><C-Space>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space><C-Space>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space><C-Space>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space><C-Space>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space><C-Space>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-Space><C-Space>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nnoremap <C-Space><C-Space>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nnoremap <C-Space><C-Space>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
 
