@@ -4,17 +4,17 @@
 
 # while in gvim shell, set dumb defaults
 if [ -t 0 ] && [ "$TERM" = "dumb" ] && [ -n "$VIM" ] ; then
-  stty erase '^H' 
-  export MANPAGER='more'
+    stty erase '^H' 
+    export MANPAGER='more'
 fi
 
 # while in X terminal, enable 256 colors
 if [ -n "$DISPLAY" ] && [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ] ; then
-  if [ -e /usr/share/terminfo/x/xterm-256color ] ; then
-    export TERM='xterm-256color'
-  else
-    export TERM='xterm-color'
-  fi
+    if [ -e /usr/share/terminfo/x/xterm-256color ] ; then
+        export TERM='xterm-256color'
+    else
+        export TERM='xterm-color'
+    fi
 fi
 
 # while in desktop environment, set gnome-keyring variables
