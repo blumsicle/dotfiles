@@ -15,10 +15,12 @@ own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 alignment bottom_right
 gap_x 20
-gap_y 40
+gap_y 60
 minimum_size 745 195
 default_color ffffff
 
 TEXT
-${voffset 15}${offset 143}${font Bruno Ace:pixelsize=120}${time %I|%M}${font}${time %p}${font}
-${voffset 30}${offset 155}${font Bruno Ace:pixelsize=30}${alignr}${time %Y %A, %B %d}
+${voffset 15}${offset 143}${font Bruno Ace:pixelsize=120}${time %I|%M}${font}${time %p}
+${voffset -80}${offset 610}download: ${alignr}${downspeedf enp0s10}KiB
+${offset 610}upload: ${alignr}${upspeedf enp0s10}KiB
+${voffset 80}${offset 155}${font Bruno Ace:pixelsize=30}${alignr}${time %Y %A, %B %d}
