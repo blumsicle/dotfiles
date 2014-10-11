@@ -37,6 +37,6 @@ Prepare vundle (vim-plugins):
 
 Build command-t (vim plugins):
 
-    cd ~/dotfiles/vim/bundle/command-t/ruby/command-t
+    cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
     ruby extconf.rb
     make
