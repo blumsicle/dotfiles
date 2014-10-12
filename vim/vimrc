@@ -53,6 +53,10 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'jplaut/vim-arduino-ino'
 Bundle 'sudar/vim-arduino-syntax'
 Bundle 'Rip-Rip/clang_complete'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/vimshell.vim'
 Bundle 'PKGBUILD'
 
 
@@ -157,7 +161,15 @@ let localmapleader = "\\"
 let SuperTabLongestEnhanced = 1
 
 " enable doxygen syntax highlighting
-let load_doxygen_syntax=1
+let load_doxygen_syntax = 1
+
+" enable neocomplete at startup
+let neocomplete#enable_at_startup = 1
+
+" use current directory as vimshell prompt
+let vimshell_prompt_expr = 
+            \ 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
+let vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 
 
 " }}}
