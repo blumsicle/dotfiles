@@ -25,39 +25,45 @@ autocmd BufNewFile,BufRead *.gradle setfiletype groovy
 
 
 " }}}
-" Vundle Setup ------------------------------------------------------------ {{{
+" NeoBundle Setup --------------------------------------------------------- {{{
 
-set nocompatible                      " use vim settings (as opposed to vi)
-filetype off                          " required to initialize vundle
+if has('vim_starting')
+    set nocompatible                  " use vim settings (as opposed to vi)
+    filetype off                      " required to initialize vundle
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+    set rtp+=~/.vim/bundle/neobundle.vim/
+endif
 
 " ---- Plugins ------------------------------------------------------------ {{{
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-endwise'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-surround'
-Bundle 'guns/ultisnips'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-repeat'
-Bundle 'wincent/Command-T'
-Bundle 'vim-scripts/DoxygenToolkit.vim'
-Bundle 'tomasr/molokai'
-Bundle 'vim-scripts/Wombat'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'jplaut/vim-arduino-ino'
-Bundle 'sudar/vim-arduino-syntax'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/vimshell.vim'
-Bundle 'PKGBUILD'
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'linux' : 'make' } }
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'guns/ultisnips'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'wincent/Command-T', { 'build' : { 'linux' : 'rake make' } }
+NeoBundle 'vim-scripts/DoxygenToolkit.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'jplaut/vim-arduino-ino'
+NeoBundle 'sudar/vim-arduino-syntax'
+NeoBundle 'Rip-Rip/clang_complete'
+NeoBundle 'PKGBUILD'
+
+call neobundle#end()
 
 
 " }}}
@@ -65,6 +71,8 @@ Bundle 'PKGBUILD'
 filetype on                           " enable filetype detection
 filetype plugin on                    " enable plugins for specific filetypes
 filetype indent on                    " enable indenting for specific filetypes
+
+NeoBundleCheck                        " check for any uninstalled bundles, prompt if found
 
 
 " }}}

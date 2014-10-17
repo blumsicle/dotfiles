@@ -29,19 +29,7 @@ Prepare oh-my-zsh:
 
     git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-Prepare vundle (vim-plugins):
+Prepare neobundle (vim-plugins):
 
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    vim +BundleInstall! +qall
-        # note: you may need to temporarily disable colorscheme first
-
-Build command-t (vim plugins):
-
-    cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
-    ruby extconf.rb
-    make
-
-Build vimproc (vim plugins):
-
-    cd ~/dotfiles/vim/bundle/vimproc.vim
-    make
+    curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+    vim +NeoBundleInstall! +qall
