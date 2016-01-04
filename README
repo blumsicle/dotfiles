@@ -1,6 +1,6 @@
 Installation:
 
-    git clone https://github.com/blumbri/dotfiles.git ~/dotfiles
+    git clone https://github.com/blumsicle/dotfiles.git ~/dotfiles
 
 Create symlinks:
 
