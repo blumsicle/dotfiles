@@ -2,5 +2,6 @@
 # ~/.zprofile
 #
 
-# cache ssh password with keychain
-eval `keychain --quiet --eval id_rsa`
+# cache ssh password with envoy
+envoy -t ssh-agent
+source <(envoy -p)
