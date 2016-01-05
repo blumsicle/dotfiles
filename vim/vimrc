@@ -28,10 +28,11 @@ autocmd BufNewFile,BufRead *.gradle setfiletype groovy
 " NeoBundle Setup --------------------------------------------------------- {{{
 
 if has('vim_starting')
-    set nocompatible                  " use vim settings (as opposed to vi)
-    filetype off                      " required to initialize vundle
+    if &compatible
+        set nocompatible              " use vim settings (as opposed to vi)
+    endif
 
-    set rtp+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " ---- Plugins ------------------------------------------------------------ {{{
@@ -56,7 +57,6 @@ NeoBundle 'wincent/Command-T', { 'build' : { 'linux' : 'rake make' } }
 NeoBundle 'vim-scripts/DoxygenToolkit.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/Wombat'
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'jplaut/vim-arduino-ino'
 NeoBundle 'sudar/vim-arduino-syntax'
 NeoBundle 'Rip-Rip/clang_complete'
@@ -123,7 +123,6 @@ if has('gui_running')
 endif
 
 colorscheme molokai                   " default colorscheme
-call togglebg#map("")                 " hack to get :ToggleBG (<F5>) loaded
 
 
 " }}}
