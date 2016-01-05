@@ -44,7 +44,7 @@ VISUAL='vim'
 PAGER='less'
 MANPAGER='less'
 KEYTIMEOUT=1
-LESS=' -R '
+LESS=' -Ri '
 LESSOPEN='| source-highlight-esc.sh %s'
 export EDITOR VISUAL PAGER MANPAGER KEYTIMEOUT LESS LESSOPEN
 
