@@ -16,10 +16,3 @@ if [ -n "$DISPLAY" ] && [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ] ; then
         export TERM='xterm-color'
     fi
 fi
-
-# while in desktop environment, set gnome-keyring variables
-if [ -n "$DISPLAY" ] ; then
-    export $(gnome-keyring-daemon --start)
-fi
-
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
