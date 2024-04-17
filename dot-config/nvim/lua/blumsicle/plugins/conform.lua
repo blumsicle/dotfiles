@@ -7,11 +7,12 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
-				json = { "prettier" },
-				yaml = { "prettier" },
-				lua = { "stylua" },
 				go = { "goimports", "gofumpt" },
+				json = { "prettier" },
+				lua = { "stylua" },
+				markdown = { "prettier" },
 				python = { "isort", "black" },
+				yaml = { "prettier" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

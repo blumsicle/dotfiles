@@ -28,6 +28,11 @@ set("n", "<leader>tn", "<cmd>tabn<cr>", { desc = "Go to next tab" })
 set("n", "<leader>tp", "<cmd>tabp<cr>", { desc = "Go to previous tab" })
 set("n", "<leader>tf", "<cmd>tabnew %<cr>", { desc = "Open current buffer in new tab" })
 
+set("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
+set("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
+set("n", "<leader>bx", "<cmd>bnext<bar>bdelete #<cr>", { desc = "Close current buffer" })
+set("n", "<leader>bb", "<cmd>buffer #<cr>", { desc = "Go to last buffer" })
+
 set("n", "<c-h>", "<c-w>h", { desc = "Move left one window" })
 set("n", "<c-l>", "<c-w>l", { desc = "Move right one window" })
 set("n", "<c-j>", "<c-w>j", { desc = "Move down one window" })

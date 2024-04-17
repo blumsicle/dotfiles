@@ -6,6 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"folke/todo-comments.nvim",
+		"ahmedkhalf/project.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -26,6 +27,7 @@ return {
 		})
 
 		telescope.load_extension("fzf")
+		telescope.load_extension("projects")
 
 		set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files in cwd" })
 		set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })

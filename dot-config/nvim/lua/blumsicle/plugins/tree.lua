@@ -15,6 +15,12 @@ return {
 				width = 40,
 				relativenumber = true,
 			},
+			sync_root_with_cwd = true,
+			respect_buf_cwd = true,
+			update_focused_file = {
+				enable = true,
+				update_root = true,
+			},
 		})
 
 		set("n", "<leader>ee", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })

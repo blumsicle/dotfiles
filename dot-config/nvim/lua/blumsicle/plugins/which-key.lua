@@ -11,6 +11,7 @@ return {
 		which_key.setup({})
 
 		which_key.register({
+			b = { "+Buffer" },
 			e = { "+Explorer" },
 			f = { "+Find" },
 			g = { "+Git" },
