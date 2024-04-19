@@ -45,6 +45,7 @@ return {
 				"prettier",
 				"pylint",
 				"stylua",
+				"golines",
 			},
 		})
 	end,
