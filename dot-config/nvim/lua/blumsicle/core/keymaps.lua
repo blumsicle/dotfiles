@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 local set = vim.keymap.set
 
 set("i", "jk", "<esc>", { desc = "Escape insert mode" })
-set({ "n", "v" }, "j", "v:count ? 'j' : 'gj'", { desc = "Move down one display line", expr = true })
-set({ "n", "v" }, "k", "v:count ? 'k' : 'gk'", { desc = "Move up one display line", expr = true })
+set({ "n", "x" }, "j", "v:count ? 'j' : 'gj'", { desc = "Move down one display line", expr = true })
+set({ "n", "x" }, "k", "v:count ? 'k' : 'gk'", { desc = "Move up one display line", expr = true })
 
 set("i", "<c-s>", "<esc><cmd>w<cr>a", { desc = "Save current file" })
 set("n", "<c-s>", "<cmd>w<cr>", { desc = "Save current file" })

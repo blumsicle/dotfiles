@@ -33,7 +33,7 @@ return {
 				set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
 
 				opts.desc = "See available code actions"
-				set({ "n", "v" }, "<leader>na", vim.lsp.buf.code_action, opts)
+				set({ "n", "x" }, "<leader>na", vim.lsp.buf.code_action, opts)
 
 				opts.desc = "Smart rename"
 				set("n", "<leader>nr", vim.lsp.buf.rename, opts)

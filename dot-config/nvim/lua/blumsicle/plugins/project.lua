@@ -1,5 +1,7 @@
 return {
 	"ahmedkhalf/project.nvim",
-	name = "project_nvim",
-	opts = {},
+	config = function()
+		local project = require("project_nvim")
+		project.setup({})
+	end,
 }

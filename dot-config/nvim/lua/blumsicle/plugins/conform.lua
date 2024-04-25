@@ -20,7 +20,7 @@ return {
 			},
 		})
 
-		set({ "n", "v" }, "<leader>nf", function()
+		set({ "n", "x" }, "<leader>nf", function()
 			conform.format({
 				lsp_fallback = true,
 				timeout_ms = 1000,

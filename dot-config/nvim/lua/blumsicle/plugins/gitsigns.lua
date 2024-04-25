@@ -14,13 +14,13 @@ return {
 
 			opts.desc = "Stage Hunk"
 			set("n", "<leader>gs", gitsigns.stage_hunk, opts)
-			set("v", "<leader>gs", function()
+			set("x", "<leader>gs", function()
 				gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, opts)
 
 			opts.desc = "Reset Hunk"
 			set("n", "<leader>gr", gitsigns.reset_hunk, opts)
-			set("v", "<leader>gr", function()
+			set("x", "<leader>gr", function()
 				gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, opts)
 
