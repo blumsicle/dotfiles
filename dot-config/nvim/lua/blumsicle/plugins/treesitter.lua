@@ -30,6 +30,7 @@ return {
 				"terraform",
 				"toml",
 				"vim",
+				"vimdoc",
 				"yaml",
 				"zig",
 			},
