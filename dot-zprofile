@@ -1,0 +1,5 @@
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/fzf --zsh)"
+
+path=($HOME/.local/bin $(go env GOPATH)/bin $HOME/.cargo/bin $path)
