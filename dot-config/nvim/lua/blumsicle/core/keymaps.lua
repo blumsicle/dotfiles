@@ -6,6 +6,13 @@ set("i", "jk", "<esc>", { desc = "Escape insert mode" })
 set({ "n", "x" }, "j", "v:count ? 'j' : 'gj'", { desc = "Move down one display line", expr = true })
 set({ "n", "x" }, "k", "v:count ? 'k' : 'gk'", { desc = "Move up one display line", expr = true })
 
+set("n", "n", "nzz", { desc = "Center screen on search forwards" })
+set("n", "N", "Nzz", { desc = "Center screen on search backwards" })
+set("n", "*", "*zz", { desc = "Center screen on search forwards" })
+set("n", "#", "#zz", { desc = "Center screen on search backwards" })
+set("n", "<c-o>", "<c-o>zz", { desc = "Center screen on jump out" })
+set("n", "<c-i>", "<c-i>zz", { desc = "Center screen on jump in" })
+
 set("i", "<c-s>", "<esc><cmd>w<cr>a", { desc = "Save current file" })
 set("n", "<c-s>", "<cmd>w<cr>", { desc = "Save current file" })
 set("i", "<c-s-s>", "<esc><cmd>noautocmd w<cr>a", { desc = "Save current file without formatting" })
