@@ -26,6 +26,7 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 zinit ice depth=1; zinit light Aloxaf/fzf-tab
 
 zinit snippet OMZP::brew
+zinit snippet OMZP::eza
 zinit snippet OMZP::git
 zinit snippet OMZP::gitignore
 zinit snippet OMZP::python
@@ -62,7 +63,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-alias ls='eza'
 alias cat='bat'
 
 function gosrc() {
