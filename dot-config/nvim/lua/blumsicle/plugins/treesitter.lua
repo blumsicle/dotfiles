@@ -33,6 +33,9 @@ return {
 				"vimdoc",
 				"yaml",
 				"zig",
+				"graphql",
+				"http",
+				"xml",
 			},
 			incremental_selection = {
 				enable = true,
