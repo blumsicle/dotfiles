@@ -19,11 +19,11 @@ function zvm_config() {
 }
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1; zinit light Aloxaf/fzf-tab
 zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 zinit ice depth=1; zinit light zsh-users/zsh-completions
 zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-zinit ice depth=1; zinit light Aloxaf/fzf-tab
 
 zinit snippet OMZP::brew
 zinit snippet OMZP::eza
@@ -58,10 +58,13 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
 alias cat='bat'
 
