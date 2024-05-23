@@ -8,9 +8,9 @@ return {
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
 		treesitter.setup({
-			highlight = { enabled = true },
-			indent = { enabled = true },
-			matchup = { enabled = true },
+			highlight = { enable = true },
+			indent = { enable = true },
+			matchup = { enable = true },
 			ensure_installed = {
 				"bash",
 				"c",
