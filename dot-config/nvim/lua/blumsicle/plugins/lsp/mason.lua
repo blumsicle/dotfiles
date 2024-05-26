@@ -31,6 +31,7 @@ return {
 				"pyright",
 				"rust_analyzer",
 				"terraformls",
+				"tsserver",
 				"vimls",
 			},
 		})
@@ -41,11 +42,11 @@ return {
 				"gofumpt",
 				"goimports",
 				"golangci-lint",
+				"golines",
 				"isort",
 				"prettier",
 				"pylint",
 				"stylua",
-				"golines",
 			},
 		})
 	end,
