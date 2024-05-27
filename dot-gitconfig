@@ -1,0 +1,9 @@
+[user]
+	name = blumsicle
+	email = blumsicle@icloud.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[diff]
+	submodule = log
