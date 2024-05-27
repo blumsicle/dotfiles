@@ -1,0 +1,3 @@
+[submodule "dot-config/bat"]
+	path = dot-config/bat
+	url = https://github.com/catppuccin/bat.git
