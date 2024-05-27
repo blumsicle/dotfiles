@@ -15,3 +15,9 @@ $ git clone git@github.com:blumsicle/dotfiles.git $HOME/dot
 $ cd $HOME/dot
 $ stow --dotfiles
 ```
+
+Make sure to update bat cache as well:
+
+```sh
+$ bat cache --build
+```
