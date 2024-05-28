@@ -28,8 +28,8 @@ return {
 						":Rest result prev<cr>",
 						{ desc = "Goto previous result tab", buffer = true }
 					)
-					set("n", "<leader>hL", ":Rest logs<cr>", { desc = "View HTTP request logs", buffer = true })
-					set("n", "<leader>hl", ":Rest last<cr>", { desc = "Run last HTTP request", buffer = true })
+					set("n", "<leader>hL", "<cmd>Rest logs<cr>", { desc = "View HTTP request logs", buffer = true })
+					set("n", "<leader>hl", "<cmd>Rest last<cr>", { desc = "Run last HTTP request", buffer = true })
 				end,
 			})
 		end,
