@@ -25,11 +25,14 @@ zinit ice depth=1; zinit light zsh-users/zsh-completions
 zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 
+ZOXIDE_CMD_OVERRIDE=zz
+
 zinit snippet OMZP::brew
 zinit snippet OMZP::eza
 zinit snippet OMZP::git
 zinit snippet OMZP::gitignore
 zinit snippet OMZP::python
+zinit snippet OMZP::zoxide
 zinit ice lucid wait; zinit snippet OMZP::fzf
 
 path=("$HOME/.local/bin" "$(go env GOPATH)/bin" "$HOME/.cargo/bin" $path)
@@ -60,15 +63,18 @@ setopt hist_find_no_dups
 
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' rehash true
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:zz:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
 export BAT_THEME="Catppuccin Frappe"
 
 alias cat='bat'
+alias man='batman'
 alias q='exit'
 
 function gosrc() {
