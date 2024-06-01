@@ -33,6 +33,7 @@ return {
 				"terraformls",
 				"tsserver",
 				"vimls",
+				"zls",
 			},
 		})
 
