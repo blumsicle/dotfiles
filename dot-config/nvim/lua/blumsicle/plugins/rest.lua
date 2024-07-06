@@ -10,6 +10,7 @@ return {
 
 	{
 		"rest-nvim/rest.nvim",
+		branch = "quickfix",
 		ft = "http",
 		dependencies = { "luarocks.nvim" },
 		config = function()
