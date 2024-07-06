@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"rcarriga/nvim-notify",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", config = true },
 	},
@@ -37,6 +38,17 @@ return {
 
 				opts.desc = "Smart rename"
 				set("n", "<leader>nr", vim.lsp.buf.rename, opts)
+
+				opts.desc = "Toggle LSP inlay hints"
+				set("n", "<leader>ni", function()
+					local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+					require("notify")(enabled and "disabled" or "enabled", vim.log.levels.INFO, {
+						title = "LSP Inlay Hints",
+						on_open = function()
+							vim.lsp.inlay_hint.enable(not enabled)
+						end,
+					})
+				end, opts)
 
 				opts.desc = "Show buffer diagnostics"
 				set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
