@@ -7,11 +7,15 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
+				css = { "prettier" },
 				go = { "goimports", "golines", "gofumpt" },
+				html = { "prettier" },
+				javascript = { "prettier" },
 				json = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				python = { "isort", "black" },
+				typescript = { "prettier" },
 				yaml = { "prettier" },
 			},
 			format_on_save = {

@@ -6,8 +6,10 @@ return {
 		local set = vim.keymap.set
 
 		lint.linters_by_ft = {
-			python = { "pylint" },
 			go = { "golangcilint" },
+			javascript = { "eslint_d" },
+			python = { "pylint" },
+			typescript = { "eslint_d" },
 		}
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
