@@ -10,18 +10,24 @@ return {
 
 		which_key.setup({})
 
-		which_key.register({
-			b = { "+Buffer" },
-			e = { "+Explorer" },
-			f = { "+Find" },
-			g = { "+Git" },
-			h = { "+HTTP" },
-			n = { "+Misc" },
-			r = { "+Refactor" },
-			s = { "+Splits" },
-			t = { "+Tabs" },
-			w = { "+Workspace" },
-			x = { "+Trouble" },
-		}, { prefix = "<leader>" })
+		which_key.add({
+			{
+				"<leader>b",
+				group = "Buffer",
+				expand = function()
+					return require("which-key.extras").expand.buf()
+				end,
+			},
+			{ "<leader>e", group = "Explorer" },
+			{ "<leader>f", group = "Find" },
+			{ "<leader>g", group = "Git" },
+			{ "<leader>h", group = "HTTP" },
+			{ "<leader>n", group = "Misc" },
+			{ "<leader>r", group = "Refactor" },
+			{ "<leader>s", group = "Splits" },
+			{ "<leader>t", group = "Tabs" },
+			{ "<leader>w", group = "Workspace" },
+			{ "<leader>x", group = "Trouble" },
+		})
 	end,
 }
