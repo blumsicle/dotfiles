@@ -9,7 +9,7 @@ config.color_scheme = "Catppuccin Frappe"
 local colors = wezterm.color.get_builtin_schemes()[config.color_scheme]
 
 config.tab_bar_at_bottom = true
--- config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = true
 config.window_frame = {
 	font = wezterm.font({ family = "IosevkaTerm Nerd Font Mono", weight = "Bold" }),
 	font_size = 12.0,
@@ -19,8 +19,8 @@ config.window_frame = {
 }
 
 config.window_padding = {
-	left = "0.5cell",
-	right = "0.5cell",
+	left = 0,
+	right = 0,
 	top = 0,
 	bottom = 0,
 }
