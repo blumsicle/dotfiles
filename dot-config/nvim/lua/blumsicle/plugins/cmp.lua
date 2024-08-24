@@ -2,6 +2,8 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		{
@@ -17,6 +19,7 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
+		local set = vim.keymap.set
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -30,25 +33,46 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<c-k>"] = cmp.mapping.select_prev_item(),
-				["<c-j>"] = cmp.mapping.select_next_item(),
+				["<c-p>"] = cmp.mapping.select_prev_item(),
+				["<c-n>"] = cmp.mapping.select_next_item(),
 				["<c-b>"] = cmp.mapping.scroll_docs(-4),
 				["<c-f>"] = cmp.mapping.scroll_docs(4),
 				["<c-space>"] = cmp.mapping.complete(),
 				["<c-e>"] = cmp.mapping.abort(),
-				["<cr>"] = cmp.mapping.confirm({ select = false }),
+				-- ["<cr>"] = cmp.mapping.confirm({ select = false }),
+				["<tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.locally_jumpable(1) then
+						luasnip.jump(1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<s-tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.locally_jumpable(1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "buffer" },
+				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp_signature_help" },
 				{ name = "path" },
 				{ name = "crates" },
+			}, {
+				{ name = "buffer" },
 			}),
 			formatting = {
 				format = lspkind.cmp_format({
 					maxwidth = 50,
 					ellipsis_char = "...",
+					show_labelDetails = true,
 				}),
 			},
 		})

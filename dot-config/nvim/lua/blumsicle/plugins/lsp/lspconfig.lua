@@ -2,7 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		"rcarriga/nvim-notify",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", config = true },
@@ -11,35 +10,28 @@ return {
 		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local set = vim.keymap.set
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				local opts = { buffer = ev.buf, silent = true }
+				local set = function(mode, lhs, rhs, desc)
+					local opts = { buffer = ev.buf, silent = true, desc = desc }
+					vim.keymap.set(mode, lhs, rhs, opts)
+				end
 
-				opts.desc = "Show LSP references"
-				set("n", "gR", "<cmd>Telescope lsp_references<cr>", opts)
+				set("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+				set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", "Show LSP definitions")
+				set("n", "gR", "<cmd>Telescope lsp_references<cr>", "Show LSP references")
+				set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", "Show LSP implementations")
+				set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "Show LSP type definitions")
 
-				opts.desc = "Go to declaration"
-				set("n", "gD", vim.lsp.buf.declaration, opts)
-
-				opts.desc = "Show LSP definitions"
-				set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
-
-				opts.desc = "Show LSP implementations"
-				set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
-
-				opts.desc = "Show LSP type definitions"
-				set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
-
-				opts.desc = "See available code actions"
-				set({ "n", "x" }, "<leader>na", vim.lsp.buf.code_action, opts)
-
-				opts.desc = "Smart rename"
-				set("n", "<leader>nr", vim.lsp.buf.rename, opts)
-
-				opts.desc = "Toggle LSP inlay hints"
+				set({ "n", "x" }, "<leader>na", vim.lsp.buf.code_action, "See available code actions")
+				set("n", "<leader>nr", vim.lsp.buf.rename, "Smart rename")
+				set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<cr>", "Show buffer diagnostics")
+				set("n", "<leader>d", vim.diagnostic.open_float, "Show line diagnostics")
+				set("n", "<leader>nR", ":LspRestart<cr>", "Restart LSP")
+				-- set("n", "K", vim.lsp.buf.hover, "Show documentation for what is under cursor")
+				--
 				set("n", "<leader>ni", function()
 					local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
 					require("notify")(enabled and "disabled" or "enabled", vim.log.levels.INFO, {
@@ -48,25 +40,7 @@ return {
 							vim.lsp.inlay_hint.enable(not enabled)
 						end,
 					})
-				end, opts)
-
-				opts.desc = "Show buffer diagnostics"
-				set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
-
-				opts.desc = "Show line diagnostics"
-				set("n", "<leader>d", vim.diagnostic.open_float, opts)
-
-				opts.desc = "Go to previous diagnostic"
-				set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-				opts.desc = "Go to next diagnostic"
-				set("n", "]d", vim.diagnostic.goto_next, opts)
-
-				opts.desc = "Show documentation for what is under cursor"
-				set("n", "K", vim.lsp.buf.hover, opts)
-
-				opts.desc = "Restart LSP"
-				set("n", "<leader>nR", ":LspRestart<cr>", opts)
+				end, "Toggle LSP inlay hints")
 			end,
 		})
 
@@ -112,6 +86,30 @@ return {
 							completion = {
 								callSnippet = "Replace",
 							},
+						},
+					},
+				})
+			end,
+			["rust_analyzer"] = function()
+				lspconfig["rust_analyzer"].setup({
+					capabilities = capabilities,
+					commands = {
+						RustOpenDocs = {
+							function()
+								vim.lsp.buf_request(
+									vim.api.nvim_get_current_buf(),
+									"experimental/externalDocs",
+									vim.lsp.util.make_position_params(),
+									function(err, url)
+										if err then
+											error(tostring(err))
+										elseif url then
+											vim.ui.open(url)
+										end
+									end
+								)
+							end,
+							description = "Open documentation for the symbol under the cursor in the default browser",
 						},
 					},
 				})

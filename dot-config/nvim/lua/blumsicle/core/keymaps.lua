@@ -13,9 +13,7 @@ set("n", "#", "#zz", { desc = "Center screen on search backwards" })
 set("n", "<c-o>", "<c-o>zz", { desc = "Center screen on jump out" })
 set("n", "<c-i>", "<c-i>zz", { desc = "Center screen on jump in" })
 
-set("i", "<c-s>", "<esc><cmd>w<cr>a", { desc = "Save current file" })
 set("n", "<c-s>", "<cmd>w<cr>", { desc = "Save current file" })
-set("i", "<c-s-s>", "<esc><cmd>noautocmd w<cr>a", { desc = "Save current file without formatting" })
 set("n", "<c-s-s>", "<cmd>noautocmd w<cr>", { desc = "Save current file without formatting" })
 
 set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit neovim" })
