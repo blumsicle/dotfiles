@@ -8,9 +8,12 @@ return {
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
 		treesitter.setup({
-			highlight = { enable = true },
-			indent = { enable = true },
-			matchup = { enable = true },
+			modules = {
+				highlight = { enable = true },
+				indent = { enable = true },
+				matchup = { enable = true },
+			},
+			auto_install = true,
 			ensure_installed = {
 				"bash",
 				"c",
