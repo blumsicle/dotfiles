@@ -15,6 +15,7 @@ return {
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				python = { "isort", "black" },
+				toml = { "taplo" },
 				typescript = { "prettier" },
 				yaml = { "prettier" },
 			},

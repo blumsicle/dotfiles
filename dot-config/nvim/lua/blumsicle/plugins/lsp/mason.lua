@@ -31,6 +31,7 @@ return {
 				"lua_ls",
 				"pyright",
 				"rust_analyzer",
+				"taplo",
 				"terraformls",
 				"ts_ls",
 				"vimls",
