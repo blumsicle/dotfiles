@@ -26,6 +26,7 @@ return {
 				"clangd",
 				"docker_compose_language_service",
 				"dockerls",
+				"emmet_language_server",
 				"gopls",
 				"jsonls",
 				"lua_ls",
@@ -33,8 +34,8 @@ return {
 				"rust_analyzer",
 				"taplo",
 				"terraformls",
-				"ts_ls",
 				"vimls",
+				"vtsls",
 				"zls",
 			},
 		})
