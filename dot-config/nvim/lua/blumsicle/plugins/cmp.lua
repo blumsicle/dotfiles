@@ -6,6 +6,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-omni",
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
@@ -33,16 +34,16 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<c-p>"] = cmp.mapping.select_prev_item(),
-				["<c-n>"] = cmp.mapping.select_next_item(),
+				["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+				["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 				["<c-b>"] = cmp.mapping.scroll_docs(-4),
 				["<c-f>"] = cmp.mapping.scroll_docs(4),
 				["<c-space>"] = cmp.mapping.complete(),
 				["<c-e>"] = cmp.mapping.abort(),
-				-- ["<cr>"] = cmp.mapping.confirm({ select = false }),
+				["<cr>"] = cmp.mapping.confirm({ select = false }),
 				["<tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
-						cmp.select_next_item()
+						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 					elseif luasnip.locally_jumpable(1) then
 						luasnip.jump(1)
 					else
@@ -51,7 +52,7 @@ return {
 				end, { "i", "s" }),
 				["<s-tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
-						cmp.select_prev_item()
+						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 					elseif luasnip.locally_jumpable(1) then
 						luasnip.jump(-1)
 					else
@@ -63,6 +64,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
+				{ name = "omni", option = { disable_omnifuncs = { "v:lua.lsp.omnifunc" } } },
 				{ name = "path" },
 				{ name = "crates" },
 			}, {
