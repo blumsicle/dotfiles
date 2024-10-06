@@ -34,6 +34,12 @@ return {
 		set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
 		set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files in cwd" })
+		set(
+			"n",
+			"<leader>fF",
+			"<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
+			{ desc = "Find files in cwd" }
+		)
 		set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help tag" })
 		set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find normal mode keymappings" })
