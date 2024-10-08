@@ -12,11 +12,13 @@ return {
 				html = { "prettier" },
 				javascript = { "prettier" },
 				json = { "prettier" },
+				jsx = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				python = { "isort", "black" },
 				toml = { "taplo" },
 				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
 				yaml = { "prettier" },
 			},
 			format_on_save = {
