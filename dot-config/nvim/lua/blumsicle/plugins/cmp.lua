@@ -20,7 +20,6 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
-		local set = vim.keymap.set
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -38,7 +37,7 @@ return {
 				["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 				["<c-b>"] = cmp.mapping.scroll_docs(-4),
 				["<c-f>"] = cmp.mapping.scroll_docs(4),
-				["<c-space>"] = cmp.mapping.complete(),
+				["<c-m>"] = cmp.mapping.complete(),
 				["<c-e>"] = cmp.mapping.abort(),
 				["<cr>"] = cmp.mapping.confirm({ select = false }),
 				["<tab>"] = cmp.mapping(function(fallback)
@@ -61,9 +60,9 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
-				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
+				{ name = "luasnip" },
 				{ name = "omni", option = { disable_omnifuncs = { "v:lua.lsp.omnifunc" } } },
 				{ name = "path" },
 				{ name = "crates" },
@@ -76,6 +75,13 @@ return {
 					ellipsis_char = "...",
 					show_labelDetails = true,
 				}),
+			},
+		})
+
+		cmp.setup.cmdline({ "/", "?" }, {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = {
+				{ name = "buffer" },
 			},
 		})
 	end,
