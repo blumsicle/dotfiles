@@ -34,8 +34,9 @@ return {
 				"rust_analyzer",
 				"taplo",
 				"terraformls",
+				"ts_ls",
 				"vimls",
-				"vtsls",
+				"volar",
 				"zls",
 			},
 		})

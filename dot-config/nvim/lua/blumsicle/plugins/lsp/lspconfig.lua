@@ -75,8 +75,8 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
+			lua_ls = function()
+				lspconfig.lua_ls.setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -90,8 +90,35 @@ return {
 					},
 				})
 			end,
-			["rust_analyzer"] = function()
-				lspconfig["rust_analyzer"].setup({
+			ts_ls = function()
+				local mason_registry = require("mason-registry")
+				local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+					.. "/node_modules/@vue/language-server"
+
+				lspconfig.ts_ls.setup({
+					capabilities = capabilities,
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = vue_language_server_path,
+								languages = { "vue" },
+							},
+						},
+					},
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+						"vue",
+					},
+				})
+			end,
+			rust_analyzer = function()
+				lspconfig.rust_analyzer.setup({
 					capabilities = capabilities,
 					commands = {
 						RustOpenDocs = {
