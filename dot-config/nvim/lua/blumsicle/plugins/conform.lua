@@ -19,6 +19,7 @@ return {
 				toml = { "taplo" },
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" },
+				vue = { "prettier" },
 				yaml = { "prettier" },
 			},
 			format_on_save = {
