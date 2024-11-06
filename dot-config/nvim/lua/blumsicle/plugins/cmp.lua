@@ -5,8 +5,8 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-omni",
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
@@ -63,7 +63,6 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
-				{ name = "omni", option = { disable_omnifuncs = { "v:lua.lsp.omnifunc" } } },
 				{ name = "path" },
 				{ name = "crates" },
 			}, {
@@ -76,6 +75,15 @@ return {
 					show_labelDetails = true,
 				}),
 			},
+		})
+
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{ name = "cmdline" },
+			}),
 		})
 
 		cmp.setup.cmdline({ "/", "?" }, {
