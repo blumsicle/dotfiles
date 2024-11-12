@@ -98,6 +98,9 @@ return {
 				lspconfig.ts_ls.setup({
 					capabilities = capabilities,
 					init_options = {
+						preferences = {
+							importModuleSpecifierPreference = "non-relative",
+						},
 						plugins = {
 							{
 								name = "@vue/typescript-plugin",
