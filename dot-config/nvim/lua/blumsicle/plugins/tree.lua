@@ -16,6 +16,7 @@ return {
 				relativenumber = true,
 			},
 			sync_root_with_cwd = true,
+			reload_on_bufenter = true,
 			respect_buf_cwd = true,
 			update_focused_file = {
 				enable = true,

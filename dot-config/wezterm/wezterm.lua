@@ -40,7 +40,7 @@ config.colors = {
 	},
 }
 
-config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "g", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
 		key = config.leader.key,

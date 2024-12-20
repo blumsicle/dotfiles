@@ -6,7 +6,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"folke/todo-comments.nvim",
-		"ahmedkhalf/project.nvim",
 		"ThePrimeagen/refactoring.nvim",
 	},
 	config = function()
@@ -28,7 +27,6 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-		telescope.load_extension("projects")
 		telescope.load_extension("refactoring")
 
 		set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
@@ -43,7 +41,6 @@ return {
 		set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help tag" })
 		set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find normal mode keymappings" })
-		set("n", "<leader>fp", "<cmd>Telescope projects<cr>", { desc = "Find projects" })
 		set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
 		set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 	end,
