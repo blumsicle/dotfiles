@@ -51,7 +51,10 @@ path=("$HOME/.local/bin" "$(go env GOPATH)/bin" "$HOME/.cargo/bin" $path)
 [[ ! -d $HOME/.zfunc ]] && mkdir -p "$HOME/.zfunc"
 
 fpath+="$HOME/.zfunc"
-fpath+="$(brew --prefix)/share/zsh/site-functions"
+
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    fpath+="$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions"
+fi
 
 autoload -Uz compinit && compinit
 
