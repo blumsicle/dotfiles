@@ -28,19 +28,26 @@ zinit ice depth"1"; zinit light jeffreytse/zsh-vi-mode
 zinit ice depth"1" pick"themes/catppuccin_frappe-zsh-syntax-highlighting.zsh"
 zinit light catppuccin/zsh-syntax-highlighting
 
-zinit ice depth"1" nocompile \
-    atclone'mkdir -p $(bat --config-dir)/themes' \
+zinit ice depth"1" nocompile                        \
+    atclone'mkdir -p $(bat --config-dir)/themes'    \
     atclone'cp themes/* $(bat --config-dir)/themes' \
-    atclone'bat cache --build' \
-    atpull'%atclone' \
+    atclone'bat cache --build'                      \
+    atpull'%atclone'                                \
     atload'export BAT_THEME="Catppuccin Frappe"'
 zinit light catppuccin/bat
+
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
+zinit ice depth"1" nocompile                 \
+    atclone'mkdir -p $K9S_CONFIG_DIR/skins'  \
+    atclone'cp dist/* $K9S_CONFIG_DIR/skins' \
+    atpull'%atclone'
+zinit light catppuccin/k9s
 
 export ZOXIDE_CMD_OVERRIDE=zz
 
 zinit snippet OMZP::brew
 zinit snippet OMZP::eza
-zinit snippet OMZP::git
+zinit ice atload'unalias gup'; zinit snippet OMZP::git
 zinit snippet OMZP::gitignore
 zinit snippet OMZP::python
 zinit snippet OMZP::zoxide
@@ -74,6 +81,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt interactive_comments
 
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
