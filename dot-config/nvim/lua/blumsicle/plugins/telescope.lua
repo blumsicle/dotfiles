@@ -23,6 +23,9 @@ return {
 						["<c-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
+				extensions = {
+					fzf = {},
+				},
 			},
 		})
 
