@@ -16,7 +16,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.cursorline = true
-opt.colorcolumn = "100"
+opt.colorcolumn = "80"
 
 opt.termguicolors = true
 opt.background = "dark"

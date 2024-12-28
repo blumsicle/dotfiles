@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
+config.font = wezterm.font("VictorMono Nerd Font Mono", { weight = "Medium" })
 config.font_size = 16.0
 config.color_scheme = "Catppuccin Frappe"
 
@@ -11,7 +11,7 @@ local colors = wezterm.color.get_builtin_schemes()[config.color_scheme]
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.window_frame = {
-	font = wezterm.font({ family = "IosevkaTerm Nerd Font Mono", weight = "Bold" }),
+	font = wezterm.font("VictorMono Nerd Font Mono", { weight = "Bold" }),
 	font_size = 12.0,
 
 	active_titlebar_bg = colors.background,
