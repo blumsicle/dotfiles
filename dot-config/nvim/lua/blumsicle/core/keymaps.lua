@@ -20,8 +20,6 @@ set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit neovim" })
 set("n", "<leader>Q", "<cmd>qa!<cr>", { desc = "Quit neovim and discard changes" })
 
 set("n", "<leader>nh", ":nohlsearch<cr>", { desc = "Clear search highlights" })
-set("n", "<leader>nu", "guiwe", { desc = "Lowercase word under cursor" })
-set("n", "<leader>nU", "gUiwe", { desc = "Uppercase word under cursor" })
 
 set("n", "<leader>sv", "<c-w>v", { desc = "Split window vertically" })
 set("n", "<leader>sh", "<c-w>s", { desc = "Split window horizontally" })

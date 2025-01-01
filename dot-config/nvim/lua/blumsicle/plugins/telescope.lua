@@ -7,6 +7,7 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"folke/todo-comments.nvim",
 		"ThePrimeagen/refactoring.nvim",
+		"johmsalas/text-case.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -31,6 +32,7 @@ return {
 
 		telescope.load_extension("fzf")
 		telescope.load_extension("refactoring")
+		telescope.load_extension("textcase")
 
 		set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
 		set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
