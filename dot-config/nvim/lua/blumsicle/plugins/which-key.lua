@@ -8,7 +8,9 @@ return {
 	config = function()
 		local which_key = require("which-key")
 
-		which_key.setup({})
+		which_key.setup({
+			preset = "modern",
+		})
 
 		which_key.add({
 			{
@@ -23,6 +25,7 @@ return {
 			{ "<leader>g", group = "Git" },
 			{ "<leader>h", group = "HTTP" },
 			{ "<leader>n", group = "Misc" },
+			{ "<leader>u", group = "Update" },
 			{ "<leader>r", group = "Refactor" },
 			{ "<leader>s", group = "Splits" },
 			{ "<leader>t", group = "Tabs" },
@@ -30,4 +33,13 @@ return {
 			{ "<leader>x", group = "Trouble" },
 		})
 	end,
+	keys = {
+		{
+			"<leader>?",
+			function()
+				require("which-key").show({ global = false })
+			end,
+			desc = "Buffer Local Keymaps",
+		},
+	},
 }

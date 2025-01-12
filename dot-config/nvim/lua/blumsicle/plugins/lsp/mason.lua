@@ -8,6 +8,7 @@ return {
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
+		local set = vim.keymap.set
 
 		mason.setup({
 			ui = {
@@ -56,5 +57,7 @@ return {
 				"stylua",
 			},
 		})
+
+		set("n", "<leader>um", "<cmd>MasonToolsUpdate<cr>", { desc = "Update Mason tools" })
 	end,
 }

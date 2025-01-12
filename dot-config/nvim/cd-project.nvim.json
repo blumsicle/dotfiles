@@ -2,5 +2,9 @@
   {
     "name": "dot",
     "path": "/Users/blumsicle/dot"
+  },
+  {
+    "name": "lazy-plugins",
+    "path": "/Users/blumsicle/.local/share/nvim/lazy"
   }
 ]

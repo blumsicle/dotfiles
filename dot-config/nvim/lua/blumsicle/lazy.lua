@@ -23,3 +23,6 @@ require("lazy").setup({
 		notify = false,
 	},
 })
+
+local set = vim.keymap.set
+set("n", "<leader>ul", "<cmd>Lazy update<cr>", { desc = "Update Lazy plugins" })
