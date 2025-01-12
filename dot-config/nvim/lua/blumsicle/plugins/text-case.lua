@@ -5,8 +5,10 @@ return {
 		local textcase = require("textcase")
 		local set = vim.keymap.set
 
-		textcase.setup({})
+		textcase.setup({
+			prefix = "gb",
+		})
 
-		set({ "n", "x" }, "ga.", "<cmd>TextCaseOpenTelescope<cr>", { desc = "Telescope text case" })
+		set({ "n", "x" }, "gb.", "<cmd>TextCaseOpenTelescope<cr>", { desc = "Telescope text case" })
 	end,
 }
