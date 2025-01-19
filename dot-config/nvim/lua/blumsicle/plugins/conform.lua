@@ -22,17 +22,15 @@ return {
 				vue = { "prettier" },
 				yaml = { "prettier" },
 			},
-			format_on_save = {
-				lsp_fallback = true,
-				timeout_ms = 1000,
+			default_format_opts = {
+				lsp_format = "fallback",
+				timeout_ms = 2000,
 			},
+			format_after_save = {},
 		})
 
 		set({ "n", "x" }, "<leader>nf", function()
-			conform.format({
-				lsp_fallback = true,
-				timeout_ms = 1000,
-			})
+			conform.format()
 		end, { desc = "Format file or range (in visual mode)" })
 	end,
 }

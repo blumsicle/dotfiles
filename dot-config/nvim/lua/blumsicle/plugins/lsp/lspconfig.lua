@@ -67,6 +67,10 @@ return {
 					[vim.diagnostic.severity.INFO] = "",
 				},
 			},
+			float = {
+				source = "if_many",
+			},
+			virtual_text = false,
 		})
 
 		mason_lspconfig.setup_handlers({
@@ -87,6 +91,17 @@ return {
 								callSnippet = "Replace",
 							},
 						},
+					},
+				})
+			end,
+			ols = function()
+				lspconfig.ols.setup({
+					capabilities = capabilities,
+					init_options = {
+						enable_fake_methods = true,
+						enable_hover = true,
+						enable_inlay_hints = true,
+						enable_references = true,
 					},
 				})
 			end,

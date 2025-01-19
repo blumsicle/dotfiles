@@ -31,6 +31,7 @@ return {
 				"gopls",
 				"jsonls",
 				"lua_ls",
+				"ols",
 				"pyright",
 				"rust_analyzer",
 				"tailwindcss",
