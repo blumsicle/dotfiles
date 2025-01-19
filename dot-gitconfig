@@ -3,6 +3,7 @@
 	email = blumsicle@icloud.com
 [core]
 	editor = nvim
+	pager = delta
 [init]
 	defaultBranch = main
 [diff]
@@ -14,3 +15,11 @@
 	required = true
 [pull]
 	rebase = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictStyle = zdiff3
+[submodule]
+	recurse = true
