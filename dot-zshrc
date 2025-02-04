@@ -116,6 +116,8 @@ alias nvimf='fzf --preview "bat --color=always {}" --preview-window "~3" --multi
 alias nvimg='git grep --line-number . | fzf --delimiter : --nth 3.. --bind "enter:become(nvim {1} +{2})"'
 
 function gosrc() {
+    local query=$([[ $1 != "" ]] && echo "--query $1")
     local srcdir="$HOME/go/src/github.com/blumsicle"
-    cd "$srcdir/$1"
+    cd "$srcdir"
+    cd "$(fd --exact-depth=1 | fzf --select-1 ${=query} || echo .)"
 }
