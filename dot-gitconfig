@@ -1,6 +1,6 @@
 [user]
 	name = blumsicle
-	email = blumsicle@icloud.com
+	email = me@blumsicle.dev
 [core]
 	editor = nvim
 	pager = delta
