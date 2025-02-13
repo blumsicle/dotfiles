@@ -1,5 +1,5 @@
 font-family = "VictorMono Nerd Font Mono"
-font-size = 14.0
+font-size = 16.0
 font-thicken = true
 theme = "catppuccin-frappe"
 window-save-state = "always"
