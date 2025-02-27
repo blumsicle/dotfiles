@@ -18,40 +18,50 @@ function zvm_config() {
     ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 }
 
-zinit ice depth"1"; zinit light romkatv/powerlevel10k
-zinit ice depth"1"; zinit light Aloxaf/fzf-tab
-zinit ice depth"1"; zinit light zsh-users/zsh-syntax-highlighting
-zinit ice depth"1"; zinit light zsh-users/zsh-completions
-zinit ice depth"1"; zinit light zsh-users/zsh-autosuggestions
-zinit ice depth"1"; zinit light jeffreytse/zsh-vi-mode
+zinit depth"1" light-mode for                                   \
+    romkatv/powerlevel10k                                       \
+    Aloxaf/fzf-tab                                              \
+    zsh-users/zsh-syntax-highlighting                           \
+    zsh-users/zsh-completions                                   \
+    zsh-users/zsh-autosuggestions                               \
+    jeffreytse/zsh-vi-mode                                      \
+    pick"themes/catppuccin_frappe-zsh-syntax-highlighting.zsh"  \
+        catppuccin/zsh-syntax-highlighting
 
-zinit ice depth"1" pick"themes/catppuccin_frappe-zsh-syntax-highlighting.zsh"
-zinit light catppuccin/zsh-syntax-highlighting
-
-zinit ice depth"1" nocompile                        \
+zinit depth"1" light-mode nocompile cloneonly for   \
     atclone'mkdir -p $(bat --config-dir)/themes'    \
     atclone'cp themes/* $(bat --config-dir)/themes' \
     atclone'bat cache --build'                      \
     atpull'%atclone'                                \
-    atload'export BAT_THEME="Catppuccin Frappe"'
-zinit light catppuccin/bat
+    atload'export BAT_THEME="Catppuccin Frappe"'    \
+        catppuccin/bat
 
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
-zinit ice depth"1" nocompile                 \
-    atclone'mkdir -p $K9S_CONFIG_DIR/skins'  \
-    atclone'cp dist/* $K9S_CONFIG_DIR/skins' \
-    atpull'%atclone'
-zinit light catppuccin/k9s
+zinit depth"1" light-mode nocompile cloneonly for   \
+    atclone'mkdir -p $K9S_CONFIG_DIR/skins'         \
+    atclone'cp dist/* $K9S_CONFIG_DIR/skins'        \
+    atpull'%atclone'                                \
+        catppuccin/k9s
+
+export TMUX_PLUGIN_MANAGER_PATH="$HOME/.local/share/tmux/plugins"
+zinit depth"1" light-mode nocompile cloneonly for   \
+    atclone'mkdir -p $TMUX_PLUGIN_MANAGER_PATH/tpm' \
+    atclone'rm -rf $TMUX_PLUGIN_MANAGER_PATH/tpm'   \
+    atclone'cp -R . $TMUX_PLUGIN_MANAGER_PATH/tpm'  \
+    atpull'%atclone'                                \
+        tmux-plugins/tpm
 
 export ZOXIDE_CMD_OVERRIDE=zz
 
-zinit snippet OMZP::brew
-zinit snippet OMZP::eza
-zinit ice atload'unalias gup'; zinit snippet OMZP::git
-zinit snippet OMZP::gitignore
-zinit snippet OMZP::python
-zinit snippet OMZP::zoxide
-zinit ice lucid wait; zinit snippet OMZP::fzf
+zinit wait lucid for                \
+    OMZP::brew                      \
+    OMZP::eza                       \
+    OMZP::gitignore                 \
+    OMZP::python                    \
+    OMZP::zoxide                    \
+    OMZP::fzf                       \
+    atload'unalias gup'             \
+        OMZP::git
 
 path=("$HOME/.local/bin" "$(go env GOPATH)/bin" "$HOME/.cargo/bin" $path)
 
