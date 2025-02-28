@@ -33,13 +33,8 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-				["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 				["<c-b>"] = cmp.mapping.scroll_docs(-4),
 				["<c-f>"] = cmp.mapping.scroll_docs(4),
-				["<c-m>"] = cmp.mapping.complete(),
-				["<c-e>"] = cmp.mapping.abort(),
-				["<c-y>"] = cmp.mapping.confirm({ select = false }),
 				["<tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
