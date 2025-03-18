@@ -63,6 +63,9 @@ zinit wait lucid for                \
     atload'unalias gup'             \
         OMZP::git
 
+typeset -U path PATH
+typeset -U fpath FPATH
+
 path=("$HOME/.local/bin" "$(go env GOPATH)/bin" "$HOME/.cargo/bin" $path)
 
 [[ ! -d $HOME/.zfunc ]] && mkdir -p "$HOME/.zfunc"
