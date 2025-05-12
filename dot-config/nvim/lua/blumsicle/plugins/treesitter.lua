@@ -42,7 +42,6 @@ return {
 				"regex",
 				"rust",
 				"scss",
-				"swift",
 				"terraform",
 				"toml",
 				"tsx",

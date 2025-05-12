@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"rcarriga/nvim-notify",
+		"mason-org/mason-lspconfig.nvim",
 		{ "antosha417/nvim-lsp-file-operations", opts = {} },
 		{ "folke/neodev.nvim", opts = {} },
 	},
@@ -44,7 +45,9 @@ return {
 			end,
 		})
 
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		vim.lsp.config("*", {
+			capabilities = cmp_nvim_lsp.default_capabilities(),
+		})
 
 		vim.diagnostic.config({
 			signs = {
@@ -71,94 +74,6 @@ return {
 				source = "if_many",
 			},
 			virtual_text = false,
-		})
-
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			lua_ls = function()
-				lspconfig.lua_ls.setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
-			ols = function()
-				lspconfig.ols.setup({
-					capabilities = capabilities,
-					init_options = {
-						enable_fake_methods = true,
-						enable_hover = true,
-						enable_inlay_hints = true,
-						enable_references = true,
-					},
-				})
-			end,
-			ts_ls = function()
-				local mason_registry = require("mason-registry")
-				local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-					.. "/node_modules/@vue/language-server"
-
-				lspconfig.ts_ls.setup({
-					capabilities = capabilities,
-					init_options = {
-						preferences = {
-							importModuleSpecifierPreference = "non-relative",
-						},
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = vue_language_server_path,
-								languages = { "vue" },
-							},
-						},
-					},
-					filetypes = {
-						"javascript",
-						"javascriptreact",
-						"javascript.jsx",
-						"typescript",
-						"typescriptreact",
-						"typescript.tsx",
-						"vue",
-					},
-				})
-			end,
-			rust_analyzer = function()
-				lspconfig.rust_analyzer.setup({
-					capabilities = capabilities,
-					commands = {
-						RustOpenDocs = {
-							function()
-								vim.lsp.buf_request(
-									vim.api.nvim_get_current_buf(),
-									"experimental/externalDocs",
-									vim.lsp.util.make_position_params(),
-									function(err, url)
-										if err then
-											error(tostring(err))
-										elseif url then
-											vim.ui.open(url)
-										end
-									end
-								)
-							end,
-							description = "Open documentation for the symbol under the cursor in the default browser",
-						},
-					},
-				})
-			end,
 		})
 	end,
 }
