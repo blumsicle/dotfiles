@@ -3,13 +3,10 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"rcarriga/nvim-notify",
-		"mason-org/mason-lspconfig.nvim",
 		{ "antosha417/nvim-lsp-file-operations", opts = {} },
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		vim.api.nvim_create_autocmd("LspAttach", {
