@@ -124,6 +124,7 @@ alias man='batman'
 alias q='exit'
 alias nvims='nvim --listen ~/.cache/nvim/server.pipe'
 alias nvimc='nvim --server ~/.cache/nvim/server.pipe --remote-silent'
+alias bupp='brew update && brew upgrade --fetch-HEAD --greedy && brew autoremove && brew cleanup'
 
 alias nvimf='fzf --preview "bat --color=always {}" --preview-window "~3" --multi --bind "enter:become(nvim {+})"'
 alias nvimg='git grep --line-number . | fzf --delimiter : --nth 3.. --bind "enter:become(nvim {1} +{2})"'
