@@ -3,8 +3,8 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"rcarriga/nvim-notify",
+		"folke/lazydev.nvim",
 		{ "antosha417/nvim-lsp-file-operations", opts = {} },
-		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")

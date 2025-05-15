@@ -15,6 +15,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
+		"folke/lazydev.nvim",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -57,6 +58,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
+				{ name = "lazydev" },
 				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "crates" },
