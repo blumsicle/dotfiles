@@ -1,7 +1,13 @@
 [
   {
+    "last_file": "lua/mini/misc.lua",
+    "last_position": [
+      198,
+      4
+    ],
     "name": "dot",
-    "path": "/Users/blumsicle/dot"
+    "path": "/Users/blumsicle/dot",
+    "visited_at": 1750381213
   },
   {
     "name": "lazy-plugins",

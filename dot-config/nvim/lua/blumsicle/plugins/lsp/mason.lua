@@ -39,7 +39,7 @@ return {
 				"terraformls",
 				"ts_ls",
 				"vimls",
-				"volar",
+				"vue_ls",
 				"zls",
 			},
 		})

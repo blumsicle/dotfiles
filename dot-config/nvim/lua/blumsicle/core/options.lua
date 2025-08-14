@@ -28,3 +28,4 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.undofile = true
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
