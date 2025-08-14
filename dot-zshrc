@@ -96,6 +96,9 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt interactive_comments
 
+zstyle ':completion:*' completer _complete _ignored _expand_alias
+zstyle ':completion:*' regular false
+zstyle ':completion:*' add-space false
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' rehash true
@@ -118,6 +121,11 @@ case ":$PATH:" in
 esac
 
 export EDITOR=nvim
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
 
 alias cat='bat'
 alias man='batman'
