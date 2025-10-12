@@ -121,6 +121,7 @@ case ":$PATH:" in
 esac
 
 export EDITOR=nvim
+export HOMEBREW_NO_ENV_HINTS=1
 
 alias -g ...='../..'
 alias -g ....='../../..'
