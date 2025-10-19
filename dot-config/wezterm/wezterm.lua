@@ -18,10 +18,13 @@ config.window_frame = {
 	inactive_titlebar_bg = colors.background,
 }
 
+config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
+
+
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 0,
+	top = 30,
 	bottom = 0,
 }
 
