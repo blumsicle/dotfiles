@@ -19,14 +19,15 @@ function zvm_config() {
 }
 
 zinit depth"1" light-mode for                                   \
-    romkatv/powerlevel10k                                       \
     Aloxaf/fzf-tab                                              \
     zsh-users/zsh-syntax-highlighting                           \
     zsh-users/zsh-completions                                   \
     zsh-users/zsh-autosuggestions                               \
     jeffreytse/zsh-vi-mode                                      \
-    pick"themes/catppuccin_frappe-zsh-syntax-highlighting.zsh"  \
-        catppuccin/zsh-syntax-highlighting
+    pick'themes/catppuccin_frappe-zsh-syntax-highlighting.zsh'  \
+        catppuccin/zsh-syntax-highlighting                      \
+    atload'eval "$(starship init zsh)"'                         \
+        starship/starship
 
 zinit depth"1" light-mode nocompile cloneonly for   \
     atclone'mkdir -p $(bat --config-dir)/themes'    \
@@ -60,8 +61,7 @@ zinit wait lucid for                \
     OMZP::python                    \
     OMZP::zoxide                    \
     OMZP::fzf                       \
-    atload'unalias gup'             \
-        OMZP::git
+    OMZP::git
 
 typeset -U path PATH
 typeset -U fpath FPATH
