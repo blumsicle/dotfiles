@@ -30,6 +30,7 @@ return {
 				"glsl",
 				"go",
 				"gomod",
+                "gotmpl",
 				"graphql",
 				"html",
 				"http",

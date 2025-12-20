@@ -1,13 +1,13 @@
 [
   {
-    "last_file": "lua/mini/misc.lua",
+    "last_file": "dot-config/starship.toml",
     "last_position": [
-      198,
-      4
+      3,
+      17
     ],
     "name": "dot",
     "path": "/Users/blumsicle/dot",
-    "visited_at": 1750381213
+    "visited_at": 1766201544
   },
   {
     "name": "lazy-plugins",
