@@ -55,7 +55,7 @@ autocmd("BufEnter", {
 
         local root = get_lsp_root(args.buf) or vim.fs.root(args.buf, root_markers)
 
-        if root ~= nil then
+        if root ~= nil and root ~= vim.fn.getcwd(-1, 0) then
             vim.cmd.lcd(vim.fn.fnameescape(root))
         end
     end,

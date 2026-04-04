@@ -1,17 +1,23 @@
-local specs = {
-    require("blum.plugins.colorscheme"),
-    require("blum.plugins.lazygit"),
-    require("blum.plugins.mini"),
-    require("blum.plugins.lsp"),
-    require("blum.plugins.lsp_file_operations"),
-    require("blum.plugins.lazydev"),
-    require("blum.plugins.blink"),
-    require("blum.plugins.conform"),
-    require("blum.plugins.noice"),
-    require("blum.plugins.oil"),
-    require("blum.plugins.treesitter"),
-    require("blum.plugins.treesitter_context"),
+local plugin_names = {
+    "colorscheme",
+    "lazygit",
+    "lazydev",
+    "mini_core",
+    "mini_ui",
+    "mini_workflow",
+    "lsp",
+    "lsp_file_operations",
+    "blink",
+    "conform",
+    "noice",
+    "oil",
+    "treesitter",
+    "treesitter_context",
 }
+
+local specs = vim.tbl_map(function(name)
+    return require("blum.plugins." .. name)
+end, plugin_names)
 
 local packages = {}
 

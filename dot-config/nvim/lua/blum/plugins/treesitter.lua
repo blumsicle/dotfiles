@@ -1,23 +1,26 @@
 local u = require("blum.plugins.util")
 
+local parser_langs = {
+    "css",
+    "go",
+    "gomod",
+    "gosum",
+    "gotmpl",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "vim",
+    "vimdoc",
+}
+
+local highlight_filetypes = parser_langs
+
 return {
     packages = {
         { src = u.gh("nvim-treesitter/nvim-treesitter") },
     },
     setup = function()
         local treesitter = require("nvim-treesitter")
-        local parser_langs = {
-            "css",
-            "go",
-            "gomod",
-            "gosum",
-            "gotmpl",
-            "lua",
-            "markdown",
-            "markdown_inline",
-            "vim",
-            "vimdoc",
-        }
         local update_stamp = vim.fs.joinpath(vim.fn.stdpath("state"), "treesitter-last-update")
         local update_interval = 60 * 60 * 24 * 7
 
@@ -25,7 +28,7 @@ return {
 
         vim.api.nvim_create_autocmd("FileType", {
             group = vim.api.nvim_create_augroup("BlumTreesitter", { clear = true }),
-            pattern = parser_langs,
+            pattern = highlight_filetypes,
             callback = function()
                 pcall(vim.treesitter.start)
             end,
