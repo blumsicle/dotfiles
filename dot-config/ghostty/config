@@ -8,3 +8,5 @@ macos-titlebar-style = "tabs"
 quick-terminal-screen = "mouse"
 shell-integration-features = "cursor,sudo,title"
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+auto-update = check
+auto-update-channel = tip
