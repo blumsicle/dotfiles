@@ -18,6 +18,17 @@ local root_markers = {
 	".root",
 }
 
+vim.filetype.add({
+    extension = {
+        gotmpl = "gotmpl",
+        tpl = "gotmpl",
+        tmpl = "gotmpl",
+    },
+    pattern = {
+        [".*/templates/.*"] = "gotmpl",
+    },
+})
+
 local function get_lsp_root(bufnr)
 	local bufname = vim.api.nvim_buf_get_name(bufnr)
 
