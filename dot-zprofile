@@ -1,4 +1,25 @@
 
+[[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+typeset -U path PATH
+
+path_add() {
+    [[ -d "$1" ]] && path=("$1" $path)
+}
+
+path_add "$HOME/.local/bin"
+path_add "$HOME/.cargo/bin"
+path_add "$HOME/.local/share/bob/nvim-bin"
+
+command -v go >/dev/null 2>&1 && path_add "$(go env GOPATH)/bin"
+command -v brew >/dev/null 2>&1 && path_add "$(brew --prefix)/opt/gnu-sed/libexec/gnubin"
+
+export PNPM_HOME="/Users/blumsicle/Library/pnpm"
+path_add "$PNPM_HOME"
+
+export EDITOR=nvim
+export HOMEBREW_NO_ENV_HINTS=1
+
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :

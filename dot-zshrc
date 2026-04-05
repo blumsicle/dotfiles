@@ -2,20 +2,23 @@ ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 [[ ! -d $ZINIT_HOME ]] && mkdir -p "$(dirname $ZINIT_HOME)"
 [[ ! -d $ZINIT_HOME/.git ]] && command -v git >/dev/null 2>&1 && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
-[[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -r "$ZINIT_HOME/zinit.zsh" ]] && source "$ZINIT_HOME/zinit.zsh"
 
-if [[ -r "$ZINIT_HOME/zinit.zsh" ]]; then
-    source "$ZINIT_HOME/zinit.zsh"
-fi
-
-function zvm_config() {
+zvm_config() {
     ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
     ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 }
 
+zinit light-mode for                            \
+    zdharma-continuum/zinit-annex-as-monitor    \
+    zdharma-continuum/zinit-annex-bin-gem-node  \
+    zdharma-continuum/zinit-annex-patch-dl      \
+    zdharma-continuum/zinit-annex-rust
+
 zinit depth"1" light-mode for                                   \
     Aloxaf/fzf-tab                                              \
     zsh-users/zsh-syntax-highlighting                           \
+    zsh-users/zsh-history-substring-search                      \
     zsh-users/zsh-completions                                   \
     zsh-users/zsh-autosuggestions                               \
     jeffreytse/zsh-vi-mode                                      \
@@ -24,32 +27,32 @@ zinit depth"1" light-mode for                                   \
     atload'eval "$(starship init zsh)"'                         \
         starship/starship
 
-zinit depth"1" light-mode nocompile cloneonly for   \
-    atclone'mkdir -p "$(bat --config-dir)/themes"'  \
-    atclone'cp themes/* "$(bat --config-dir)/themes"' \
-    atclone'bat cache --build'                      \
-    atpull'%atclone'                                \
-    atload'export BAT_THEME="Catppuccin Frappe"'    \
+zinit wait lucid depth"1" light-mode nocompile cloneonly for    \
+    atclone'mkdir -p "$(bat --config-dir)/themes"'              \
+    atclone'cp themes/* "$(bat --config-dir)/themes"'           \
+    atclone'bat cache --build'                                  \
+    atpull'%atclone'                                            \
+    atload'export BAT_THEME="Catppuccin Frappe"'                \
         catppuccin/bat
 
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
-zinit depth"1" light-mode nocompile cloneonly for   \
-    atclone'mkdir -p $K9S_CONFIG_DIR/skins'         \
-    atclone'cp dist/* $K9S_CONFIG_DIR/skins'        \
-    atpull'%atclone'                                \
+zinit wait lucid depth"1" light-mode nocompile cloneonly for    \
+    atclone'mkdir -p $K9S_CONFIG_DIR/skins'                     \
+    atclone'cp dist/* $K9S_CONFIG_DIR/skins'                    \
+    atpull'%atclone'                                            \
         catppuccin/k9s
 
 export TMUX_PLUGIN_MANAGER_PATH="$HOME/.local/share/tmux/plugins"
-zinit depth"1" light-mode nocompile cloneonly for   \
-    atclone'mkdir -p "$TMUX_PLUGIN_MANAGER_PATH"'   \
-    atclone'rm -rf $TMUX_PLUGIN_MANAGER_PATH/tpm'   \
-    atclone'cp -R . "$TMUX_PLUGIN_MANAGER_PATH/tpm"' \
-    atpull'%atclone'                                \
+zinit wait lucid depth"1" light-mode nocompile cloneonly for    \
+    atclone'mkdir -p "$TMUX_PLUGIN_MANAGER_PATH"'               \
+    atclone'rm -rf $TMUX_PLUGIN_MANAGER_PATH/tpm'               \
+    atclone'cp -R . "$TMUX_PLUGIN_MANAGER_PATH/tpm"'            \
+    atpull'%atclone'                                            \
         tmux-plugins/tpm
 
 export ZOXIDE_CMD_OVERRIDE=zz
 
-zinit wait lucid for                \
+zinit wait"1" lucid for             \
     OMZP::brew                      \
     OMZP::eza                       \
     OMZP::gitignore                 \
@@ -58,40 +61,44 @@ zinit wait lucid for                \
     OMZP::fzf                       \
     OMZP::git
 
-typeset -U path PATH
+zinit wait"2" lucid depth"1" light-mode for \
+    wfxr/forgit
+
 typeset -U fpath FPATH
-
-path=("$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME/.local/share/bob/nvim-bin" $path)
-
-if command -v go >/dev/null 2>&1; then
-    path=("$(go env GOPATH)/bin" $path)
-fi
-
-if [[ -f "/opt/homebrew/bin/brew" ]]; then
-    path+=("$(/opt/homebrew/bin/brew --prefix)/opt/gnu-sed/libexec/gnubin")
-fi
 
 [[ ! -d $HOME/.zfunc ]] && mkdir -p "$HOME/.zfunc"
 
-fpath+=("$HOME/.zfunc")
+fpath_add() {
+    [[ -d "$1" ]] && fpath+=("$1")
+}
 
-if [[ -f "/opt/homebrew/bin/brew" ]]; then
-    fpath+=("$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions")
-fi
+fpath_add "$HOME/.zfunc"
+command -v brew >/dev/null 2>&1 && fpath_add "$(brew --prefix)/share/zsh/site-functions"
 
 autoload -Uz compinit && compinit
+compdef _man batman
+compdef _files diff gdiff
 
 zinit cdreplay -q
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+bindkey -M emacs '^[[A' history-substring-search-up
+bindkey -M emacs '^[[B' history-substring-search-down
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 HISTSIZE=5000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+setopt autocd
+setopt extendedglob
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt no_beep
 setopt appendhistory
-setopt sharehistory
+setopt inc_append_history
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -100,31 +107,20 @@ setopt hist_find_no_dups
 setopt interactive_comments
 
 zstyle ':completion:*' completer _complete _ignored _expand_alias
-zstyle ':completion:*' regular false
 zstyle ':completion:*' add-space false
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':completion:*' rehash true
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh"
+zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' menu no
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' menu select=2
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:zz:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group '<' '>'
-
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d "$PYENV_ROOT/bin" ]] && path=("$PYENV_ROOT/bin" $path)
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-
-export PNPM_HOME="/Users/blumsicle/Library/pnpm"
-case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-export EDITOR=nvim
-export HOMEBREW_NO_ENV_HINTS=1
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -141,9 +137,10 @@ alias bupp='brew update && brew upgrade --fetch-HEAD --greedy && brew autoremove
 alias nvimf='fzf --preview "bat --color=always {}" --preview-window "~3" --multi --bind "enter:become(nvim {+})"'
 alias nvimg='git grep --line-number . | fzf --delimiter : --nth 3.. --bind "enter:become(nvim {1} +{2})"'
 
-function gosrc() {
-    local srcdir="$HOME/go/src/github.com/blumsicle"
-    cd "$srcdir" || return
+GOSRC_DIR="$HOME/go/src/github.com/blumsicle"
+
+gosrc() {
+    cd "$GOSRC_DIR" || return
 
     [[ $1 == "." ]] && return
 
@@ -152,3 +149,9 @@ function gosrc() {
 
     cd "$(fd --exact-depth=1 | fzf --select-1 "${query_args[@]}" || echo .)"
 }
+
+_gosrc() {
+    _files -W "$GOSRC_DIR" -/
+}
+
+compdef _gosrc gosrc
