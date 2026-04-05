@@ -31,6 +31,8 @@ return {
                 buf_kset("n", "grt", function() mini_extra.pickers.lsp({ scope = "type_definition" }) end,
                     { desc = "Show LSP type definitions" })
                 buf_kset("n", "grD", mini_extra.pickers.diagnostic, { desc = "Show buffer diagnostics" })
+                buf_kset("n", "gO", function() mini_extra.pickers.lsp({ scope = "document_symbol" }) end,
+                    { desc = "Show document symbols" })
                 buf_kset("n", "grl", function()
                     local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
 

@@ -113,6 +113,10 @@
       "rev": "de740991c12411b663994b2860f1a4fd0937c130",
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
+    "nvim-lint": {
+      "rev": "4b03656c09c1561f89b6aa0665c15d292ba9499d",
+      "src": "https://github.com/mfussenegger/nvim-lint"
+    },
     "nvim-lsp-file-operations": {
       "rev": "b9c795d3973e8eec22706af14959bc60c579e771",
       "src": "https://github.com/antosha417/nvim-lsp-file-operations"
@@ -132,6 +136,10 @@
     "nvim-treesitter-context": {
       "rev": "b0c45cefe2c8f7b55fc46f34e563bc428ef99636",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
+    },
+    "nvim-treesitter-textobjects": {
+      "rev": "93d60a475f0b08a8eceb99255863977d3a25f310",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",

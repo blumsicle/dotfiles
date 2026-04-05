@@ -29,7 +29,7 @@ return {
         u.kset("n", "<leader>fg", mini_pick.builtin.grep_live, { desc = "Find string in cwd" })
         u.kset("n", "<leader>fh", mini_pick.builtin.help, { desc = "Find help" })
         u.kset("n", "<leader>fk", mini_extra.pickers.keymaps, { desc = "Find keymaps" })
-        u.kset("n", "<leader>fv", mini_visits.select_path, { desc = "Find visited paths" })
+        u.kset("n", "<leader>fv", mini_extra.pickers.visit_paths, { desc = "Find visited paths" })
         u.kset("n", "<leader>tw", mini_trailspace.trim, { desc = "Trim trailing whitespace" })
     end,
 }

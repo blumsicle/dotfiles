@@ -9,6 +9,7 @@ return {
             formatters_by_ft = {
                 css = { "prettier" },
                 go = { "goimports", "golines", "gofumpt" },
+                lua = { "stylua" },
             },
             default_format_opts = {
                 lsp_format = "fallback",

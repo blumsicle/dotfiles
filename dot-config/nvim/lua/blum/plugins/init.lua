@@ -2,6 +2,7 @@ local plugin_names = {
     "colorscheme",
     "lazygit",
     "lazydev",
+    "lint",
     "mini_core",
     "mini_ui",
     "mini_workflow",
@@ -13,6 +14,7 @@ local plugin_names = {
     "oil",
     "treesitter",
     "treesitter_context",
+    "treesitter_textobjects",
 }
 
 local specs = vim.tbl_map(function(name)

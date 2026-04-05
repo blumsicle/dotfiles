@@ -36,6 +36,7 @@ set("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
 set("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
 set("n", "<leader>bx", "<cmd>bprevious<bar>bdelete #<cr>", { desc = "Close current buffer" })
 set("n", "<leader>bb", "<cmd>buffer #<cr>", { desc = "Go to last buffer" })
+set("n", "<leader>bD", "<cmd>%bd|e#|bd#<cr>", { desc = "Close all other buffers" })
 
 set("n", "<c-h>", "<c-w>h", { desc = "Move left one window" })
 set("n", "<c-l>", "<c-w>l", { desc = "Move right one window" })
