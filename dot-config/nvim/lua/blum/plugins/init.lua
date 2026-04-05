@@ -1,36 +1,36 @@
 local plugin_names = {
-    "colorscheme",
-    "lazygit",
-    "lazydev",
-    "lint",
-    "mini_core",
-    "mini_ui",
-    "mini_workflow",
-    "lsp",
-    "lsp_file_operations",
-    "blink",
-    "conform",
-    "noice",
-    "oil",
-    "treesitter",
-    "treesitter_context",
-    "treesitter_textobjects",
+	"colorscheme",
+	"lazygit",
+	"lazydev",
+	"lint",
+	"mini_core",
+	"mini_ui",
+	"mini_workflow",
+	"lsp",
+	"lsp_file_operations",
+	"blink",
+	"conform",
+	"noice",
+	"oil",
+	"treesitter",
+	"treesitter_context",
+	"treesitter_textobjects",
 }
 
 local specs = vim.tbl_map(function(name)
-    return require("blum.plugins." .. name)
+	return require("blum.plugins." .. name)
 end, plugin_names)
 
 local packages = {}
 
 for _, spec in ipairs(specs) do
-    vim.list_extend(packages, spec.packages or {})
+	vim.list_extend(packages, spec.packages or {})
 end
 
 vim.pack.add(packages)
 
 for _, spec in ipairs(specs) do
-    if spec.setup then
-        spec.setup()
-    end
+	if spec.setup then
+		spec.setup()
+	end
 end
