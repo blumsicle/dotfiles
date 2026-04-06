@@ -144,7 +144,7 @@ alias bupp='brew update && brew upgrade --fetch-HEAD --greedy && brew autoremove
 alias nvimf='fzf --preview "bat --color=always {}" --preview-window "~3" --multi --bind "enter:become(nvim {+})"'
 alias nvimg='git grep --line-number . | fzf --delimiter : --nth 3.. --bind "enter:become(nvim {1} +{2})"'
 
-GOSRC_DIR="$HOME/go/src/github.com/blumsicle"
+GOSRC_DIR="$HOME/src/go"
 
 gosrc() {
     cd "$GOSRC_DIR" || return
