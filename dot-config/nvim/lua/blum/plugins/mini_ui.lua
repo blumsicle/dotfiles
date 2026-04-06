@@ -53,6 +53,7 @@ return {
 				mini_clue.gen_clues.square_brackets(),
 				mini_clue.gen_clues.z(),
 				{ mode = "n", keys = "<leader>b", desc = "+Buffers" },
+				{ mode = "n", keys = "<leader>e", desc = "+Explorer" },
 				{ mode = "n", keys = "<leader>f", desc = "+Find" },
 				{ mode = "n", keys = "<leader>s", desc = "+Splits" },
 				{ mode = "n", keys = "<leader>t", desc = "+Tabs" },

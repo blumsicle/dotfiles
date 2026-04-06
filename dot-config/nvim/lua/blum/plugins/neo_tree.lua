@@ -68,11 +68,10 @@ return {
 			"n",
 			"<leader>ee",
 			"<cmd>Neotree filesystem reveal_force_cwd left toggle<cr>",
-			{ desc = "Toggle file tree" }
+			{ desc = "Toggle explorer" }
 		)
-		u.kset("n", "<leader>eE", "<cmd>Neotree filesystem reveal left<cr>", { desc = "Toggle file tree" })
-		u.kset("n", "<leader>eb", "<cmd>Neotree buffers reveal right toggle dir=/<cr>", { desc = "Toggle file tree" })
-		u.kset("n", "<leader>eB", "<cmd>Neotree buffers reveal right<cr>", { desc = "Toggle file tree" })
-		u.kset("n", "<leader>eg", "<cmd>Neotree git_status float toggle<cr>", { desc = "Toggle file tree" })
+		u.kset("n", "<leader>ef", "<cmd>Neotree filesystem reveal left<cr>", { desc = "Reveal in explorer" })
+		u.kset("n", "<leader>eb", "<cmd>Neotree buffers reveal right toggle dir=/<cr>", { desc = "Toggle buffer explorer" })
+		u.kset("n", "<leader>eg", "<cmd>Neotree git_status float toggle<cr>", { desc = "Toggle git explorer" })
 	end,
 }
