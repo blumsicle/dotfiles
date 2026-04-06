@@ -12,7 +12,6 @@ local plugin_names = {
 	"conform",
 	"snacks",
 	"noice",
-	"neo_tree",
 	"oil",
 	"treesitter",
 	"treesitter_context",

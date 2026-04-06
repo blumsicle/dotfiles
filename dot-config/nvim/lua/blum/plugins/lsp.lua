@@ -8,7 +8,9 @@ return {
 		local snacks = require("snacks")
 		local lsp_group = vim.api.nvim_create_augroup("BlumLsp", { clear = true })
 
-		vim.diagnostic.config({ virtual_text = true })
+		vim.diagnostic.config({
+			virtual_text = true,
+		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = lsp_group,

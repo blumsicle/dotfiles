@@ -5,14 +5,12 @@ return {
 		{ src = u.gh("nvim-mini/mini.icons") },
 		{ src = u.gh("nvim-mini/mini.clue") },
 		{ src = u.gh("nvim-mini/mini.hipatterns") },
-		{ src = u.gh("nvim-mini/mini.indentscope") },
 		{ src = u.gh("nvim-mini/mini.statusline") },
 		{ src = u.gh("nvim-mini/mini.tabline") },
 	},
 	setup = function()
 		local mini_clue = require("mini.clue")
 		local mini_hipatterns = require("mini.hipatterns")
-		local mini_indentscope = require("mini.indentscope")
 
 		require("mini.icons").setup()
 		mini_hipatterns.setup({
@@ -23,12 +21,6 @@ return {
 				note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
 				todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
 			},
-		})
-		mini_indentscope.setup({
-			draw = {
-				animation = mini_indentscope.gen_animation.none(),
-			},
-			symbol = "│",
 		})
 		require("mini.statusline").setup()
 		require("mini.tabline").setup()

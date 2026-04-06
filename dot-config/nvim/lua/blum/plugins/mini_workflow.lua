@@ -12,7 +12,11 @@ return {
 		require("mini.bracketed").setup({
 			comment = { suffix = "" },
 		})
-		require("mini.diff").setup()
+		require("mini.diff").setup({
+			view = {
+				style = "sign",
+			},
+		})
 		require("mini.git").setup()
 		mini_trailspace.setup()
 

@@ -11,10 +11,28 @@ return {
 			input = {
 				enabled = true,
 			},
+			explorer = {
+				enabled = true,
+			},
+			indent = {
+				enabled = true,
+			},
 			lazygit = {
 				enabled = true,
 			},
+			notifier = {
+				enabled = true,
+			},
 			picker = {
+				enabled = true,
+			},
+			quickfile = {
+				enabled = true,
+			},
+			scope = {
+				enabled = true,
+			},
+			statuscolumn = {
 				enabled = true,
 			},
 		})
@@ -22,6 +40,24 @@ return {
 		u.kset("n", "<leader>gg", function()
 			snacks.lazygit()
 		end, { desc = "Open lazygit" })
+		u.kset("n", "<leader>ee", function()
+			snacks.explorer()
+		end, { desc = "Toggle explorer" })
+		u.kset("n", "<leader>ef", function()
+			snacks.explorer.reveal()
+		end, { desc = "Reveal in explorer" })
+		u.kset("n", "<leader>gB", function()
+			snacks.git.blame_line()
+		end, { desc = "Show git blame for line" })
+		u.kset("n", "<leader>fn", function()
+			snacks.notifier.show_history()
+		end, { desc = "Show notification history" })
+		u.kset("n", "<leader>bx", function()
+			snacks.bufdelete()
+		end, { desc = "Close current buffer" })
+		u.kset("n", "<leader>bD", function()
+			snacks.bufdelete.other()
+		end, { desc = "Close all other buffers" })
 		u.kset("n", "<leader>ff", snacks.picker.files, { desc = "Find files in cwd" })
 		u.kset("n", "<leader>fF", function()
 			snacks.picker.files({ hidden = true, ignored = true })

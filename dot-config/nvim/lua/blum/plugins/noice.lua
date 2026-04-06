@@ -3,7 +3,6 @@ local u = require("blum.plugins.util")
 return {
 	packages = {
 		{ src = u.gh("MunifTanjim/nui.nvim") },
-		{ src = u.gh("rcarriga/nvim-notify") },
 		{ src = u.gh("folke/noice.nvim") },
 	},
 	setup = function()
