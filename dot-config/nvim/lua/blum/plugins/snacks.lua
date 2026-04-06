@@ -5,10 +5,19 @@ return {
 		{ src = u.gh("folke/snacks.nvim") },
 	},
 	setup = function()
-		require("snacks").setup({
+		local snacks = require("snacks")
+
+		snacks.setup({
 			input = {
 				enabled = true,
 			},
+			lazygit = {
+				enabled = true,
+			},
 		})
+
+		u.kset("n", "<leader>gg", function()
+			snacks.lazygit()
+		end, { desc = "Open lazygit" })
 	end,
 }
