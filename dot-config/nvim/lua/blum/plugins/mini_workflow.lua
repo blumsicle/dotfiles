@@ -50,11 +50,30 @@ return {
 
 		mini_pick.setup()
 		mini_extra.setup()
-		require("mini.bracketed").setup()
+		require("mini.bracketed").setup({
+			comment = { suffix = "" },
+		})
 		require("mini.diff").setup()
 		require("mini.git").setup()
 		mini_trailspace.setup()
 		mini_visits.setup()
+
+		u.kset("n", "[c", function()
+			if vim.wo.diff then
+				vim.cmd.normal({ args = { vim.v.count1 .. "[c" }, bang = true })
+				return
+			end
+
+			MiniBracketed.comment("backward", { n_times = vim.v.count1 })
+		end, { desc = "Previous comment or diff hunk" })
+		u.kset("n", "]c", function()
+			if vim.wo.diff then
+				vim.cmd.normal({ args = { vim.v.count1 .. "]c" }, bang = true })
+				return
+			end
+
+			MiniBracketed.comment("forward", { n_times = vim.v.count1 })
+		end, { desc = "Next comment or diff hunk" })
 
 		u.kset("n", "<leader>ff", mini_pick.builtin.files, { desc = "Find files in cwd" })
 		u.kset("n", "<leader>fF", files_with_hidden, { desc = "Find files in cwd, including hidden" })

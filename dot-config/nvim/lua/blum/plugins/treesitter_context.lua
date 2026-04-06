@@ -10,7 +10,7 @@ return {
 			multiline_threshold = 10,
 		})
 
-		u.kset("n", "[c", function()
+		u.kset("n", "[g", function()
 			require("treesitter-context").go_to_context(vim.v.count1)
 		end, { desc = "Jump to treesitter context" })
 	end,
