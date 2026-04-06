@@ -65,10 +65,28 @@ return {
 				end
 			end,
 		})
+		vim.lsp.config("basedpyright", {
+			settings = {
+				basedpyright = {
+					analysis = {
+						diagnosticMode = "openFilesOnly",
+					},
+				},
+			},
+		})
+		vim.lsp.config("ruff", {
+			init_options = {
+				settings = {
+					hover = false,
+				},
+			},
+		})
 
 		vim.lsp.enable({
+			"basedpyright",
 			"gopls",
 			"lua_ls",
+			"ruff",
 			"stylua",
 		})
 	end,
