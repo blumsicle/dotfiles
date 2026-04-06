@@ -6,12 +6,12 @@ return {
 	},
 	setup = function()
 		require("gitblame").setup({
-			date_format = "%r",
+			date_format = "%Y-%m-%d %H:%M:%S %z",
 			ignored_filetypes = {
 				"neo-tree",
 				"oil",
 			},
-			message_template = " <author> • <date> • <summary>",
+			message_template = " <author> • <date> • <summary> • <<sha>>",
 			schedule_event = "CursorMoved",
 			clear_event = "CursorMovedI",
 		})
