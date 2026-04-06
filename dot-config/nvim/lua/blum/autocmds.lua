@@ -19,14 +19,14 @@ local root_markers = {
 }
 
 vim.filetype.add({
-    extension = {
-        gotmpl = "gotmpl",
-        tpl = "gotmpl",
-        tmpl = "gotmpl",
-    },
-    pattern = {
-        [".*/templates/.*"] = "gotmpl",
-    },
+	extension = {
+		gotmpl = "gotmpl",
+		tpl = "gotmpl",
+		tmpl = "gotmpl",
+	},
+	pattern = {
+		[".*/templates/.*"] = "gotmpl",
+	},
 })
 
 local function get_lsp_root(bufnr)
@@ -37,18 +37,24 @@ local function get_lsp_root(bufnr)
 	end
 
 	for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
-		local workspace_folders = client.config.workspace_folders
+		if client.config.root_dir and bufname:find(client.config.root_dir, 1, true) == 1 then
+			return client.config.root_dir
+		end
+
+		local workspace_folders = client.workspace_folders or client.config.workspace_folders
 
 		if workspace_folders then
 			for _, workspace in ipairs(workspace_folders) do
-				if bufname:find(workspace.name, 1, true) == 1 then
-					return workspace.name
+				local workspace_path = workspace.name
+
+				if workspace.uri then
+					workspace_path = vim.uri_to_fname(workspace.uri)
+				end
+
+				if workspace_path and bufname:find(workspace_path, 1, true) == 1 then
+					return workspace_path
 				end
 			end
-		end
-
-		if client.config.root_dir and bufname:find(client.config.root_dir, 1, true) == 1 then
-			return client.config.root_dir
 		end
 	end
 end
@@ -94,7 +100,7 @@ autocmd("FileType", {
 autocmd("BufEnter", {
 	group = rooter_group,
 	callback = function(args)
-		if vim.bo[args.buf].buftype ~= "" then
+		if vim.bo[args.buf].buftype ~= "" or vim.bo[args.buf].filetype == "neo-tree" then
 			return
 		end
 
