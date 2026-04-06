@@ -11,6 +11,7 @@ local plugin_names = {
 	"blink",
 	"conform",
 	"noice",
+	"neo_tree",
 	"oil",
 	"treesitter",
 	"treesitter_context",
