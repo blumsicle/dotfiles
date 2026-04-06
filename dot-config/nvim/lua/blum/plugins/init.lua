@@ -11,6 +11,7 @@ local plugin_names = {
 	"lsp_file_operations",
 	"blink",
 	"conform",
+	"snacks",
 	"noice",
 	"neo_tree",
 	"oil",
