@@ -12,6 +12,7 @@ return {
 		require("nvim-web-devicons").setup({
 			default = true,
 		})
+		local events = require("neo-tree.events")
 		require("window-picker").setup({
 			hint = "statusline-winbar",
 			filter_rules = {
@@ -60,7 +61,16 @@ return {
 			},
 			window = {
 				position = "left",
-				width = 32,
+				width = 40,
+			},
+			event_handlers = {
+				{
+					event = events.NEO_TREE_BUFFER_ENTER,
+					handler = function()
+						vim.wo.number = true
+						vim.wo.relativenumber = true
+					end,
+				},
 			},
 		})
 
@@ -71,7 +81,12 @@ return {
 			{ desc = "Toggle explorer" }
 		)
 		u.kset("n", "<leader>ef", "<cmd>Neotree filesystem reveal left<cr>", { desc = "Reveal in explorer" })
-		u.kset("n", "<leader>eb", "<cmd>Neotree buffers reveal right toggle dir=/<cr>", { desc = "Toggle buffer explorer" })
+		u.kset(
+			"n",
+			"<leader>eb",
+			"<cmd>Neotree buffers reveal right toggle dir=/<cr>",
+			{ desc = "Toggle buffer explorer" }
+		)
 		u.kset("n", "<leader>eg", "<cmd>Neotree git_status float toggle<cr>", { desc = "Toggle git explorer" })
 	end,
 }
