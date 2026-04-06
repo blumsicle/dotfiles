@@ -5,7 +5,7 @@ return {
 		{ src = u.gh("neovim/nvim-lspconfig") },
 	},
 	setup = function()
-		local mini_extra = require("mini.extra")
+		local snacks = require("snacks")
 		local lsp_group = vim.api.nvim_create_augroup("BlumLsp", { clear = true })
 
 		vim.diagnostic.config({ virtual_text = true })
@@ -22,22 +22,12 @@ return {
 
 				buf_kset("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 				buf_kset("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-				buf_kset("n", "gd", function()
-					mini_extra.pickers.lsp({ scope = "definition" })
-				end, { desc = "Show LSP definitions" })
-				buf_kset("n", "grr", function()
-					mini_extra.pickers.lsp({ scope = "references" })
-				end, { desc = "Show LSP references" })
-				buf_kset("n", "gri", function()
-					mini_extra.pickers.lsp({ scope = "implementation" })
-				end, { desc = "Show LSP implementations" })
-				buf_kset("n", "grt", function()
-					mini_extra.pickers.lsp({ scope = "type_definition" })
-				end, { desc = "Show LSP type definitions" })
-				buf_kset("n", "grd", mini_extra.pickers.diagnostic, { desc = "Show buffer diagnostics" })
-				buf_kset("n", "gO", function()
-					mini_extra.pickers.lsp({ scope = "document_symbol" })
-				end, { desc = "Show document symbols" })
+				buf_kset("n", "gd", snacks.picker.lsp_definitions, { desc = "Show LSP definitions" })
+				buf_kset("n", "grr", snacks.picker.lsp_references, { desc = "Show LSP references" })
+				buf_kset("n", "gri", snacks.picker.lsp_implementations, { desc = "Show LSP implementations" })
+				buf_kset("n", "grt", snacks.picker.lsp_type_definitions, { desc = "Show LSP type definitions" })
+				buf_kset("n", "grd", snacks.picker.diagnostics_buffer, { desc = "Show buffer diagnostics" })
+				buf_kset("n", "gO", snacks.picker.lsp_symbols, { desc = "Show document symbols" })
 				buf_kset("n", "grh", function()
 					local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
 
