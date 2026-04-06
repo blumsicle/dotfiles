@@ -6,6 +6,7 @@ return {
 	},
 	setup = function()
 		require("gitblame").setup({
+			enabled = false,
 			date_format = "%Y-%m-%d %H:%M:%S %z",
 			ignored_filetypes = {
 				"neo-tree",
