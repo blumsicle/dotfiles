@@ -11,9 +11,6 @@ return {
 			input = {
 				enabled = true,
 			},
-			explorer = {
-				enabled = true,
-			},
 			indent = {
 				enabled = true,
 			},
@@ -40,12 +37,6 @@ return {
 		u.kset("n", "<leader>gg", function()
 			snacks.lazygit()
 		end, { desc = "Open lazygit" })
-		u.kset("n", "<leader>ee", function()
-			snacks.explorer()
-		end, { desc = "Toggle explorer" })
-		u.kset("n", "<leader>ef", function()
-			snacks.explorer.reveal()
-		end, { desc = "Reveal in explorer" })
 		u.kset("n", "<leader>gB", function()
 			snacks.git.blame_line()
 		end, { desc = "Show git blame for line" })
