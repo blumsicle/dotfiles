@@ -1,22 +1,11 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+local root = require("blum.root")
 
 local autosave_group = augroup("AutoSave", { clear = true })
 local indent_group = augroup("IndentSettings", { clear = true })
 local rooter_group = augroup("Rooter", { clear = true })
 local yank_highlight_group = augroup("YankHighlight", { clear = true })
-
-local root_markers = {
-	".git",
-	".hg",
-	".svn",
-	"package.json",
-	"go.mod",
-	"Cargo.toml",
-	"pyproject.toml",
-	"Makefile",
-	".root",
-}
 
 vim.filetype.add({
 	extension = {
@@ -28,36 +17,6 @@ vim.filetype.add({
 		[".*/templates/.*"] = "gotmpl",
 	},
 })
-
-local function get_lsp_root(bufnr)
-	local bufname = vim.api.nvim_buf_get_name(bufnr)
-
-	if bufname == "" then
-		return nil
-	end
-
-	for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
-		if client.config.root_dir and bufname:find(client.config.root_dir, 1, true) == 1 then
-			return client.config.root_dir
-		end
-
-		local workspace_folders = client.workspace_folders or client.config.workspace_folders
-
-		if workspace_folders then
-			for _, workspace in ipairs(workspace_folders) do
-				local workspace_path = workspace.name
-
-				if workspace.uri then
-					workspace_path = vim.uri_to_fname(workspace.uri)
-				end
-
-				if workspace_path and bufname:find(workspace_path, 1, true) == 1 then
-					return workspace_path
-				end
-			end
-		end
-	end
-end
 
 autocmd({ "BufLeave", "FocusLost" }, {
 	group = autosave_group,
@@ -97,18 +56,10 @@ autocmd("FileType", {
 	end,
 })
 
-autocmd("BufEnter", {
+autocmd({ "BufEnter", "BufWinEnter", "WinEnter" }, {
 	group = rooter_group,
 	callback = function(args)
-		if vim.bo[args.buf].buftype ~= "" or vim.bo[args.buf].filetype == "neo-tree" then
-			return
-		end
-
-		local root = get_lsp_root(args.buf) or vim.fs.root(args.buf, root_markers)
-
-		if root ~= nil and root ~= vim.fn.getcwd(-1, 0) then
-			vim.cmd.lcd(vim.fn.fnameescape(root))
-		end
+		root.update(args.buf)
 	end,
 })
 

@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+local root = require("blum.root")
 local set = vim.keymap.set
 
 set("i", "jk", "<esc>", { desc = "Escape insert mode" })
@@ -11,8 +12,18 @@ set("n", "n", "nzz", { desc = "Center screen on search forwards" })
 set("n", "N", "Nzz", { desc = "Center screen on search backwards" })
 set("n", "*", "*zz", { desc = "Center screen on search forwards" })
 set("n", "#", "#zz", { desc = "Center screen on search backwards" })
-set("n", "<c-o>", "<c-o>zz", { desc = "Center screen on jump out" })
-set("n", "<c-i>", "<c-i>zz", { desc = "Center screen on jump in" })
+set("n", "<c-o>", function()
+	vim.api.nvim_feedkeys(vim.keycode("<C-o>zz"), "n", false)
+	vim.schedule(function()
+		root.update(0)
+	end)
+end, { desc = "Center screen on jump out" })
+set("n", "<c-i>", function()
+	vim.api.nvim_feedkeys(vim.keycode("<C-i>zz"), "n", false)
+	vim.schedule(function()
+		root.update(0)
+	end)
+end, { desc = "Center screen on jump in" })
 
 set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save current file" })
 set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Save current file without formatting" })
