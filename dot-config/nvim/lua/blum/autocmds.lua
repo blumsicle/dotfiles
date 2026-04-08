@@ -5,6 +5,7 @@ local root = require("blum.root")
 local autosave_group = augroup("AutoSave", { clear = true })
 local indent_group = augroup("IndentSettings", { clear = true })
 local rooter_group = augroup("Rooter", { clear = true })
+local spell_group = augroup("SpellSettings", { clear = true })
 local yank_highlight_group = augroup("YankHighlight", { clear = true })
 
 vim.filetype.add({
@@ -53,6 +54,49 @@ autocmd("FileType", {
 		vim.bo.tabstop = 4
 		vim.bo.softtabstop = 4
 		vim.bo.shiftwidth = 4
+	end,
+})
+
+autocmd("FileType", {
+	group = spell_group,
+	pattern = { "gitcommit", "markdown", "text" },
+	callback = function()
+		vim.opt_local.spell = true
+		vim.opt_local.spelloptions:remove("noplainbuffer")
+	end,
+})
+
+autocmd("FileType", {
+	group = spell_group,
+	pattern = {
+		"bash",
+		"c",
+		"cpp",
+		"css",
+		"go",
+		"gomod",
+		"gosum",
+		"gotmpl",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"jsonc",
+		"lua",
+		"nix",
+		"python",
+		"rust",
+		"sh",
+		"toml",
+		"typescript",
+		"typescriptreact",
+		"vim",
+		"vimdoc",
+		"yaml",
+	},
+	callback = function()
+		vim.opt_local.spell = true
+		vim.opt_local.spelloptions:append("noplainbuffer")
 	end,
 })
 
