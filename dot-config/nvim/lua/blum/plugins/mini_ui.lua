@@ -50,6 +50,7 @@ return {
 				{ mode = "n", keys = "<leader>s", desc = "+Splits" },
 				{ mode = "n", keys = "<leader>t", desc = "+Tabs" },
 				{ mode = "n", keys = "<leader>g", desc = "+Git" },
+				{ mode = "n", keys = "<leader>x", desc = "+Trouble" },
 			},
 		})
 	end,

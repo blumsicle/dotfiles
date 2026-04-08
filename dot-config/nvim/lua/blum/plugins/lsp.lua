@@ -9,7 +9,12 @@ return {
 		local lsp_group = vim.api.nvim_create_augroup("BlumLsp", { clear = true })
 
 		vim.diagnostic.config({
-			virtual_text = true,
+			float = {
+				source = true,
+			},
+			virtual_text = {
+				source = true,
+			},
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
