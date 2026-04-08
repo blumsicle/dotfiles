@@ -15,11 +15,7 @@ return {
 		require("mini.icons").setup()
 		mini_hipatterns.setup({
 			highlighters = {
-				fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
-				hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
 				hex_color = mini_hipatterns.gen_highlighter.hex_color(),
-				note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-				todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
 			},
 		})
 		require("mini.statusline").setup()
