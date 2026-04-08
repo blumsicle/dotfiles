@@ -8,7 +8,7 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				css = { "prettier" },
-				go = { "goimports", "golines", "gofumpt" },
+				go = { "gci", "goimports", "golines", "gofumpt" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				python = { "ruff_fix", "ruff_format" },
