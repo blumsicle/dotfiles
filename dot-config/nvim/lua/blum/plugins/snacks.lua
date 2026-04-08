@@ -10,18 +10,15 @@ return {
 			local bufnr = vim.api.nvim_get_current_buf()
 			local cursor = vim.api.nvim_win_get_cursor(0)
 			local row = cursor[1] - 1
-			local col = cursor[2]
+			local col = cursor[2] + 1
 			local line = vim.api.nvim_buf_get_lines(bufnr, row, row + 1, false)[1] or ""
 
 			local start_col = col
-			while start_col > 0 and line:sub(start_col, start_col):match("[%w_]") do
+			while start_col > 1 and line:sub(start_col - 1, start_col - 1):match("[%w_]") do
 				start_col = start_col - 1
 			end
-			if not line:sub(start_col, start_col):match("[%w_]") then
-				start_col = start_col + 1
-			end
 
-			local end_col = col + 1
+			local end_col = col
 			while end_col <= #line and line:sub(end_col, end_col):match("[%w_]") do
 				end_col = end_col + 1
 			end
@@ -48,7 +45,7 @@ return {
 					return
 				end
 
-				vim.api.nvim_buf_set_text(bufnr, row, start_col, row, end_col - 1, { choice })
+				vim.api.nvim_buf_set_text(bufnr, row, start_col - 1, row, end_col - 1, { choice })
 			end)
 		end
 
