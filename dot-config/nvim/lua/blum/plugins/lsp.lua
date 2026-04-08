@@ -78,6 +78,7 @@ return {
 			"basedpyright",
 			"gopls",
 			"lua_ls",
+			"marksman",
 			"ruff",
 			"stylua",
 		})

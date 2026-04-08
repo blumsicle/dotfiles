@@ -10,6 +10,7 @@ return {
 				css = { "prettier" },
 				go = { "goimports", "golines", "gofumpt" },
 				lua = { "stylua" },
+				markdown = { "prettier" },
 				python = { "ruff_fix", "ruff_format" },
 			},
 			default_format_opts = {

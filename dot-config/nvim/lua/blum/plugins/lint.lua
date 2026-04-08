@@ -10,6 +10,7 @@ return {
 
 		lint.linters_by_ft = {
 			go = { "golangcilint" },
+			markdown = { "markdownlint-cli2" },
 			python = { "ruff" },
 		}
 

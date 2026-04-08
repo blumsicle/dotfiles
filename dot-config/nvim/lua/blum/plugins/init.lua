@@ -14,6 +14,7 @@ local plugin_names = {
 	"noice",
 	"neo_tree",
 	"oil",
+	"render_markdown",
 	"treesitter",
 	"treesitter_context",
 	"treesitter_textobjects",

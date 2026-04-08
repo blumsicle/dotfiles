@@ -23,6 +23,9 @@ set("n", "<leader>sh", "<c-w>s", { desc = "Split window horizontally" })
 set("n", "<leader>se", "<c-w>=", { desc = "Make splits equal size" })
 set("n", "<leader>sx", "<c-w>c", { desc = "Close current split" })
 set("n", "<leader>so", "<c-w>o", { desc = "Close all other splits" })
+set("n", "<leader>sw", function()
+	vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle word wrap" })
 
 set("n", "<leader>to", "<cmd>tabnew<cr>", { desc = "Open new tab" })
 set("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close current tab" })
