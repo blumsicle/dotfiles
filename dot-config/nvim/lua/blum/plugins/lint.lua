@@ -14,7 +14,7 @@ return {
 			python = { "ruff" },
 		}
 
-		vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "FileType", "InsertLeave" }, {
 			group = lint_group,
 			callback = function()
 				lint.try_lint()
