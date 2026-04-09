@@ -83,6 +83,7 @@ return {
 			"bashls",
 			"basedpyright",
 			"gopls",
+			"jsonls",
 			"lua_ls",
 			"marksman",
 			"ruff",

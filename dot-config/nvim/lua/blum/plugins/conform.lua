@@ -14,6 +14,9 @@ return {
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				python = { "ruff_fix", "ruff_format" },
+				sh = { "shfmt" },
+				bash = { "shfmt" },
+				zsh = { "shfmt" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
