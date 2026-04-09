@@ -80,6 +80,7 @@ return {
 		})
 
 		vim.lsp.enable({
+			"bashls",
 			"basedpyright",
 			"gopls",
 			"lua_ls",
