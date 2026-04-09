@@ -9,6 +9,8 @@ return {
 			formatters_by_ft = {
 				css = { "prettier" },
 				go = { "gci", "goimports", "golines", "gofumpt" },
+				json = { "prettier" },
+				jsonc = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				python = { "ruff_fix", "ruff_format" },
