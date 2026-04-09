@@ -64,6 +64,14 @@ return {
 			},
 			picker = {
 				enabled = true,
+				sources = {
+					projects = {
+						dev = {
+							"~/src",
+							"~/dot",
+						},
+					},
+				},
 			},
 			quickfile = {
 				enabled = true,
@@ -100,6 +108,7 @@ return {
 		u.kset("n", "<leader>fG", snacks.picker.git_files, { desc = "Find git files" })
 		u.kset("n", "<leader>fh", snacks.picker.help, { desc = "Find help" })
 		u.kset("n", "<leader>fk", snacks.picker.keymaps, { desc = "Find keymaps" })
+		u.kset("n", "<leader>fp", snacks.picker.projects, { desc = "Find projects" })
 		u.kset("n", "<leader>fs", spell_suggest, { desc = "Find spelling suggestions" })
 		u.kset("n", "<leader>fv", snacks.picker.recent, { desc = "Find recent files" })
 	end,
