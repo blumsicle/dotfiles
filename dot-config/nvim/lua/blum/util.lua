@@ -12,6 +12,12 @@ local root_markers = {
 	".root",
 }
 
+function M.gh(x)
+	return "https://github.com/" .. x
+end
+
+M.kset = vim.keymap.set
+
 function M.get_lsp_root(bufnr)
 	local bufname = vim.api.nvim_buf_get_name(bufnr)
 
@@ -42,7 +48,7 @@ function M.get_lsp_root(bufnr)
 	end
 end
 
-function M.update(bufnr)
+function M.update_root(bufnr)
 	bufnr = bufnr == 0 and vim.api.nvim_get_current_buf() or bufnr
 
 	if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "neo-tree" then

@@ -1,6 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local root = require("blum.root")
+local util = require("blum.util")
 
 local autosave_group = augroup("AutoSave", { clear = true })
 local indent_group = augroup("IndentSettings", { clear = true })
@@ -103,7 +103,7 @@ autocmd("FileType", {
 autocmd({ "BufEnter", "BufWinEnter", "WinEnter" }, {
 	group = rooter_group,
 	callback = function(args)
-		root.update(args.buf)
+		util.update_root(args.buf)
 	end,
 })
 

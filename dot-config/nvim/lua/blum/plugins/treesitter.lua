@@ -1,4 +1,4 @@
-local u = require("blum.plugins.util")
+local u = require("blum.util")
 
 local parser_langs = {
 	"bash",

@@ -37,6 +37,8 @@ set("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
 set("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
 set("n", "<leader>bb", "<cmd>buffer #<cr>", { desc = "Go to last buffer" })
 
+set("n", "<leader>pu", vim.pack.update, { desc = "Update plugins" })
+
 set("n", "<c-h>", "<c-w>h", { desc = "Move left one window" })
 set("n", "<c-l>", "<c-w>l", { desc = "Move right one window" })
 set("n", "<c-j>", "<c-w>j", { desc = "Move down one window" })
