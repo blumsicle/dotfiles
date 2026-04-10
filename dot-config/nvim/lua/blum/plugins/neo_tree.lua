@@ -9,6 +9,8 @@ return {
 		{ src = u.gh("nvim-tree/nvim-web-devicons") },
 	},
 	setup = function()
+		local neo_tree_width = 40
+
 		require("nvim-web-devicons").setup({
 			default = true,
 		})
@@ -38,6 +40,17 @@ return {
 			close_if_last_window = true,
 			enable_git_status = true,
 			enable_diagnostics = true,
+			commands = {
+				decrease_width = function(state)
+					vim.api.nvim_win_set_width(state.winid, math.max(20, vim.api.nvim_win_get_width(state.winid) - 5))
+				end,
+				increase_width = function(state)
+					vim.api.nvim_win_set_width(state.winid, vim.api.nvim_win_get_width(state.winid) + 5)
+				end,
+				reset_width = function(state)
+					vim.api.nvim_win_set_width(state.winid, neo_tree_width)
+				end,
+			},
 			filesystem = {
 				bind_to_cwd = true,
 				follow_current_file = {
@@ -51,6 +64,13 @@ return {
 					hide_dotfiles = true,
 					hide_gitignored = true,
 				},
+				window = {
+					mappings = {
+						["-"] = { "decrease_width", desc = "decrease_width" },
+						["+"] = { "increase_width", desc = "increase_width" },
+						["="] = { "reset_width", desc = "reset_width" },
+					},
+				},
 			},
 			buffers = {
 				bind_to_cwd = false,
@@ -61,7 +81,7 @@ return {
 			},
 			window = {
 				position = "left",
-				width = 40,
+				width = neo_tree_width,
 			},
 			event_handlers = {
 				{
