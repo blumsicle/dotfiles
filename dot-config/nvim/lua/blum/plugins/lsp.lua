@@ -88,6 +88,8 @@ return {
 			"marksman",
 			"ruff",
 			"stylua",
+			"taplo",
+			"yamlls",
 		})
 	end,
 }

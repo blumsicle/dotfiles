@@ -16,6 +16,8 @@ return {
 				python = { "ruff_fix", "ruff_format" },
 				sh = { "shfmt" },
 				bash = { "shfmt" },
+				toml = { "taplo" },
+				yaml = { "prettier" },
 				zsh = { "shfmt" },
 			},
 			default_format_opts = {
