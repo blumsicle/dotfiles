@@ -11,10 +11,12 @@ local yank_highlight_group = augroup("YankHighlight", { clear = true })
 vim.filetype.add({
 	extension = {
 		gotmpl = "gotmpl",
+		jenkinsfile = "groovy",
 		tpl = "gotmpl",
 		tmpl = "gotmpl",
 	},
 	pattern = {
+		["Jenkinsfile"] = "groovy",
 		[".*/templates/.*"] = "gotmpl",
 	},
 })
