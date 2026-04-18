@@ -11,6 +11,8 @@ return {
 		lint.linters_by_ft = {
 			bash = { "shellcheck", "typos" },
 			go = { "golangcilint", "typos" },
+			javascript = { "biomejs", "typos" },
+			javascriptreact = { "biomejs", "typos" },
 			json = { "typos" },
 			jsonc = { "typos" },
 			lua = { "typos" },
@@ -18,6 +20,8 @@ return {
 			python = { "ruff", "typos" },
 			sh = { "shellcheck", "typos" },
 			toml = { "typos" },
+			typescript = { "biomejs", "typos" },
+			typescriptreact = { "biomejs", "typos" },
 			yaml = { "yamllint", "typos" },
 			zsh = { "shellcheck", "typos" },
 		}

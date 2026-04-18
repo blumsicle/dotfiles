@@ -9,6 +9,8 @@ return {
 			formatters_by_ft = {
 				css = { "prettier" },
 				go = { "gci", "goimports", "golines", "gofumpt" },
+				javascript = { "biome" },
+				javascriptreact = { "biome" },
 				json = { "prettier" },
 				jsonc = { "prettier" },
 				lua = { "stylua" },
@@ -17,6 +19,8 @@ return {
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 				toml = { "taplo" },
+				typescript = { "biome" },
+				typescriptreact = { "biome" },
 				yaml = { "prettier" },
 				zsh = { "shfmt" },
 			},
