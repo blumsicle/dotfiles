@@ -1,6 +1,7 @@
 local plugin_names = {
 	"colorscheme",
 	"git_blame",
+	"hlslens",
 	"lazydev",
 	"lint",
 	"mini_core",

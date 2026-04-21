@@ -17,7 +17,7 @@ opt.inccommand = "nosplit" -- Shows the effects of a command incrementally in th
 opt.undofile = true -- Enable persistent undo
 opt.completeopt = { "menuone", "popup", "noinsert" } -- Options for completion menu
 opt.winborder = "rounded" -- Use rounded borders for windows
-opt.hlsearch = false -- Disable highlighting of search results
+opt.hlsearch = true -- Highlight search results
 opt.spelllang = { "en_us" } -- Use US English for spell checking
 opt.clipboard:append("unnamedplus") -- Always use clipboard
 opt.splitright = true -- New vertical splits to the right

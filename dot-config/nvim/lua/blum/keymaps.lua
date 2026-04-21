@@ -6,11 +6,7 @@ local set = vim.keymap.set
 set("i", "jk", "<esc>", { desc = "Escape insert mode" })
 set({ "n", "x" }, "j", "v:count ? 'j' : 'gj'", { desc = "Move down one display line", expr = true })
 set({ "n", "x" }, "k", "v:count ? 'k' : 'gk'", { desc = "Move up one display line", expr = true })
-
-set("n", "n", "nzz", { desc = "Center screen on search forwards" })
-set("n", "N", "Nzz", { desc = "Center screen on search backwards" })
-set("n", "*", "*zz", { desc = "Center screen on search forwards" })
-set("n", "#", "#zz", { desc = "Center screen on search backwards" })
+set("n", "<leader>uh", "<cmd>nohlsearch<cr>", { desc = "Clear search highlights" })
 
 set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save current file" })
 set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Save current file without formatting" })
@@ -42,6 +38,9 @@ set("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
 set("n", "<leader>bb", "<cmd>buffer #<cr>", { desc = "Go to last buffer" })
 
 set("n", "<leader>pu", vim.pack.update, { desc = "Update plugins" })
+set("n", "<leader>pU", function()
+	vim.pack.update(nil, { force = true })
+end, { desc = "Update plugins immediately" })
 
 set("n", "<c-h>", "<c-w>h", { desc = "Move left one window" })
 set("n", "<c-l>", "<c-w>l", { desc = "Move right one window" })

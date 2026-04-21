@@ -7,6 +7,9 @@ return {
 	},
 	setup = function()
 		require("noice").setup({
+			messages = {
+				view_search = false,
+			},
 			lsp = {
 				progress = {
 					enabled = true,
