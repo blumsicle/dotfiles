@@ -2,17 +2,17 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local set = vim.keymap.set
+local diagnostic_virtual_text_enabled = true
 
 set("i", "jk", "<esc>", { desc = "Escape insert mode" })
 set({ "n", "x" }, "j", "v:count ? 'j' : 'gj'", { desc = "Move down one display line", expr = true })
 set({ "n", "x" }, "k", "v:count ? 'k' : 'gk'", { desc = "Move up one display line", expr = true })
 set("n", "<leader>uh", "<cmd>nohlsearch<cr>", { desc = "Clear search highlights" })
 set("n", "<leader>uv", function()
-	local virtual_text = vim.diagnostic.config().virtual_text
-	local enabled = virtual_text ~= false
+	diagnostic_virtual_text_enabled = not diagnostic_virtual_text_enabled
 
 	vim.diagnostic.config({
-		virtual_text = enabled and false or { source = true },
+		virtual_text = diagnostic_virtual_text_enabled and { source = true } or false,
 	})
 end, { desc = "Toggle diagnostic virtual text" })
 
