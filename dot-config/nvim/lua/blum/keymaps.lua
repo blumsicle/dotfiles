@@ -7,6 +7,14 @@ set("i", "jk", "<esc>", { desc = "Escape insert mode" })
 set({ "n", "x" }, "j", "v:count ? 'j' : 'gj'", { desc = "Move down one display line", expr = true })
 set({ "n", "x" }, "k", "v:count ? 'k' : 'gk'", { desc = "Move up one display line", expr = true })
 set("n", "<leader>uh", "<cmd>nohlsearch<cr>", { desc = "Clear search highlights" })
+set("n", "<leader>uv", function()
+	local virtual_text = vim.diagnostic.config().virtual_text
+	local enabled = virtual_text ~= false
+
+	vim.diagnostic.config({
+		virtual_text = enabled and false or { source = true },
+	})
+end, { desc = "Toggle diagnostic virtual text" })
 
 set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save current file" })
 set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Save current file without formatting" })
