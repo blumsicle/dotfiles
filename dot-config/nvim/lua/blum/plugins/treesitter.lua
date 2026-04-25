@@ -13,6 +13,7 @@ local parser_langs = {
 	"regex",
 	"vim",
 	"vimdoc",
+	"yaml",
 }
 
 local highlight_filetypes = parser_langs
