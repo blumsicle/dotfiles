@@ -5,15 +5,7 @@ return {
 		{ src = u.gh("neovim/nvim-lspconfig") },
 	},
 	setup = function()
-		local capabilities = require("blink.cmp").get_lsp_capabilities({
-			textDocument = {
-				completion = {
-					completionItem = {
-						snippetSupport = false,
-					},
-				},
-			},
-		})
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		local snacks = require("snacks")
 		local lsp_group = vim.api.nvim_create_augroup("BlumLsp", { clear = true })
 
@@ -80,13 +72,6 @@ return {
 					analysis = {
 						diagnosticMode = "openFilesOnly",
 					},
-				},
-			},
-		})
-		vim.lsp.config("gopls", {
-			settings = {
-				gopls = {
-					usePlaceholders = false,
 				},
 			},
 		})
