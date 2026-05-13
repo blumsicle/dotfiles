@@ -2,7 +2,7 @@ local u = require("blum.util")
 
 return {
 	packages = {
-		{ src = u.gh("nvim-neo-tree/neo-tree.nvim"), version = "v3.x" },
+		{ src = u.gh("nvim-neo-tree/neo-tree.nvim") },
 		{ src = u.gh("nvim-lua/plenary.nvim") },
 		{ src = u.gh("MunifTanjim/nui.nvim") },
 		{ src = u.gh("s1n7ax/nvim-window-picker") },
