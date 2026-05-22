@@ -75,6 +75,11 @@ return {
 				},
 			},
 		})
+		vim.lsp.config("gopls", {
+			cmd_env = {
+				GOEXPERIMENT = "jsonv2",
+			},
+		})
 		vim.lsp.config("ruff", {
 			init_options = {
 				settings = {
