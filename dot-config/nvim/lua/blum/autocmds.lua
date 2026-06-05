@@ -50,7 +50,7 @@ autocmd("FileType", {
 
 autocmd("FileType", {
 	group = indent_group,
-	pattern = { "python" },
+	pattern = { "bash", "python" },
 	callback = function()
 		vim.bo.expandtab = true
 		vim.bo.tabstop = 4
