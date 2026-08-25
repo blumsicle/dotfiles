@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 
 config.font = wezterm.font("VictorMono Nerd Font Mono", { weight = "Medium" })
 config.font_size = 16.0
-config.color_scheme = "Catppuccin Frappe"
+config.color_scheme = "Catppuccin Macchiato"
 
 local colors = wezterm.color.get_builtin_schemes()[config.color_scheme]
 

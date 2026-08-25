@@ -10,7 +10,7 @@ return {
 			vim.api.nvim_set_hl(0, "SnippetTabstopActive", {})
 		end
 
-		require("catppuccin").setup({ flavour = "frappe" })
+		require("catppuccin").setup({ flavour = "macchiato" })
 		vim.cmd.colorscheme("catppuccin")
 		disable_snippet_highlights()
 

@@ -29,16 +29,16 @@ zinit light-mode for                            \
     zdharma-continuum/zinit-annex-patch-dl      \
     zdharma-continuum/zinit-annex-rust
 
-zinit depth"1" light-mode for                                   \
-    Aloxaf/fzf-tab                                              \
-    zsh-users/zsh-syntax-highlighting                           \
-    zsh-users/zsh-history-substring-search                      \
-    zsh-users/zsh-completions                                   \
-    zsh-users/zsh-autosuggestions                               \
-    jeffreytse/zsh-vi-mode                                      \
-    pick'themes/catppuccin_frappe-zsh-syntax-highlighting.zsh'  \
-        catppuccin/zsh-syntax-highlighting                      \
-    atload'eval "$(starship init zsh)"'                         \
+zinit depth"1" light-mode for                                     \
+    Aloxaf/fzf-tab                                                \
+    zsh-users/zsh-syntax-highlighting                             \
+    zsh-users/zsh-history-substring-search                        \
+    zsh-users/zsh-completions                                     \
+    zsh-users/zsh-autosuggestions                                 \
+    jeffreytse/zsh-vi-mode                                        \
+    pick'themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh' \
+        catppuccin/zsh-syntax-highlighting                        \
+    atload'eval "$(starship init zsh)"'                           \
         starship/starship
 
 zinit wait lucid depth"1" light-mode nocompile cloneonly for    \
@@ -46,7 +46,7 @@ zinit wait lucid depth"1" light-mode nocompile cloneonly for    \
     atclone'cp themes/* "$(bat --config-dir)/themes"'           \
     atclone'bat cache --build'                                  \
     atpull'%atclone'                                            \
-    atload'export BAT_THEME="Catppuccin Frappe"'                \
+    atload'export BAT_THEME="Catppuccin Macchiato"'             \
         catppuccin/bat
 
 export K9S_CONFIG_DIR="$HOME/.config/k9s"

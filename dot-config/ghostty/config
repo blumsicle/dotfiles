@@ -1,7 +1,7 @@
 font-family = "VictorMono Nerd Font Mono"
 font-size = 16.0
 font-thicken = true
-theme = "Catppuccin Frappe"
+theme = "Catppuccin Macchiato"
 window-save-state = "always"
 mouse-hide-while-typing = true
 macos-titlebar-style = "tabs"
